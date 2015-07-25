@@ -1,9 +1,9 @@
 var player = (function () {
     function changeMovementAngle(player) {
         if (player.isRightPressed) {
-            player.movementAngle += 4;
+            player.movementAngle += CONSTANTS.MOVEMENT_ANGLE_CHANGE;
         } else if (player.isLeftPressed) {
-            player.movementAngle -= 4;
+            player.movementAngle -= CONSTANTS.MOVEMENT_ANGLE_CHANGE;
         }
     }
 
@@ -29,9 +29,9 @@ var player = (function () {
     }
 
     var currentId = 0,
-        fieldWidth = +gamefield.getAttribute('width');
-    fieldHeight = +gamefield.getAttribute('height');
-    player = Object.create({});
+        fieldWidth = parseInt(gamefield.getAttribute('width')),
+        fieldHeight = parseInt(gamefield.getAttribute('height')),
+        player = Object.create({});
 
     Object.defineProperty(player, 'init', {
         value: function (name) {
@@ -54,9 +54,9 @@ var player = (function () {
         },
         set: function (value) {
             if (value < 0) {
-                this._movementAngle = 360 - 4;
+                this._movementAngle = 360 - CONSTANTS.MOVEMENT_ANGLE_CHANGE;
             } else if (value > 360) {
-                this._movementAngle = 4;
+                this._movementAngle = CONSTANTS.MOVEMENT_ANGLE_CHANGE;
             } else {
                 this._movementAngle = value;
             }
