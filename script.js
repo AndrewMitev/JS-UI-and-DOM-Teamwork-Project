@@ -1,14 +1,14 @@
 var gamefield = document.getElementById('game-field'),
-	gamefieldCtx = gamefield.getContext('2d');
+    gamefieldCtx = gamefield.getContext('2d');
 
 var CONSTANTS = {
     PLAYER_RADIUS: 5
 };
 
-var player = (function() {
+var player = (function () {
     function changeMovementAngle(player) {
         if (player.isRightPressed) {
-            player.movementAngle += 4 ;
+            player.movementAngle += 4;
         } else if (player.isLeftPressed) {
             player.movementAngle -= 4;
         }
@@ -37,11 +37,11 @@ var player = (function() {
 
     var currentId = 0,
         fieldWidth = +gamefield.getAttribute('width');
-    	fieldHeight = +gamefield.getAttribute('height');
-    	player = Object.create({});
+    fieldHeight = +gamefield.getAttribute('height');
+    player = Object.create({});
 
     Object.defineProperty(player, 'init', {
-        value: function(name) {
+        value: function (name) {
             this.x = parseInt(Math.random() * fieldWidth);
             this.y = parseInt(Math.random() * fieldHeight);
             this.xModifier = 1;
@@ -56,14 +56,14 @@ var player = (function() {
     });
 
     Object.defineProperty(player, 'movementAngle', {
-        get: function() {
+        get: function () {
             return this._movementAngle;
         },
-        set: function(value) {
+        set: function (value) {
             if (value < 0) {
                 this._movementAngle = 360 - 4;
             } else if (value > 360) {
-                this._movementAngle = 0 + 4;
+                this._movementAngle = 4;
             } else {
                 this._movementAngle = value;
             }
@@ -71,7 +71,7 @@ var player = (function() {
     });
 
     Object.defineProperty(player, 'update', {
-        value: function() {
+        value: function () {
             changeMovementAngle(this);
             changeModifiers(this);
             changePosition(this);
@@ -81,38 +81,10 @@ var player = (function() {
     return player;
 }());
 
-function beginGame() {
-    player1.update();
-
-    var modifierVectorLength = Math.sqrt(Math.abs(player1.xModifier, player1.yModifier));
-    var normalizeModifierVal = 1/modifierVectorLength;
-
-    var colors = gamefieldCtx.getImageData(
-    				player1.x + (CONSTANTS.PLAYER_RADIUS + 1) * player1.xModifier*normalizeModifierVal,
-    				player1.y + (CONSTANTS.PLAYER_RADIUS + 1) * player1.yModifier*normalizeModifierVal, 1, 1).data;
-    if (colors[0] !== 0 || colors[2] !== 0 || colors[1] !== 0) {
-        console.log(colors[0] + ' ' + colors[1] + ' ' + colors[2] + " " + colors[3]);
-    }
-
-    gamefieldCtx.fillStyle = 'green';
-    gamefieldCtx.beginPath();
-    gamefieldCtx.arc(player1.x, player1.y, CONSTANTS.PLAYER_RADIUS, 0, 2 * Math.PI);
-    gamefieldCtx.fill();
-    gamefieldCtx.closePath();
-
-    player2.update();
-    gamefieldCtx.fillStyle = 'blue';
-    gamefieldCtx.beginPath();
-    gamefieldCtx.arc(player2.x, player2.y, CONSTANTS.PLAYER_RADIUS, 0, 2 * Math.PI);
-    gamefieldCtx.fill();
-    gamefieldCtx.closePath();
-    requestAnimationFrame(beginGame);
-}
-
 var player1 = Object.create(player).init('PlayerOne');
 var player2 = Object.create(player).init('PlayerTwo');
 
-document.addEventListener('keydown', function(ev) {
+document.addEventListener('keydown', function (ev) {
     if (ev.keyCode == 68) {
         player1.isRightPressed = true;
     } else if (ev.keyCode == 65) {
@@ -120,7 +92,7 @@ document.addEventListener('keydown', function(ev) {
     }
 }, false);
 
-document.addEventListener('keyup', function(ev) {
+document.addEventListener('keyup', function (ev) {
     if (ev.keyCode == 68) {
         player1.isRightPressed = false;
     } else if (ev.keyCode == 65) {
@@ -128,7 +100,7 @@ document.addEventListener('keyup', function(ev) {
     }
 }, false);
 
-document.addEventListener('keydown', function(ev) {
+document.addEventListener('keydown', function (ev) {
     if (ev.keyCode == 39) {
         player2.isRightPressed = true;
     } else if (ev.keyCode == 37) {
@@ -136,12 +108,10 @@ document.addEventListener('keydown', function(ev) {
     }
 }, false);
 
-document.addEventListener('keyup', function(ev) {
+document.addEventListener('keyup', function (ev) {
     if (ev.keyCode == 39) {
         player2.isRightPressed = false;
     } else if (ev.keyCode == 37) {
         player2.isLeftPressed = false;
     }
 }, false);
-
-beginGame();
