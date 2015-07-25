@@ -1,31 +1,22 @@
-document.addEventListener('keydown', function (ev) {
-    if (ev.keyCode == 68) {
-        player1.isRightPressed = true;
-    } else if (ev.keyCode == 65) {
-        player1.isLeftPressed = true;
-    }
-}, false);
+var addEventListener = (function(playerNumber, keyState, keyCodeLeft, keyCodeRight){
+    var isKeyPressed;
 
-document.addEventListener('keyup', function (ev) {
-    if (ev.keyCode == 68) {
-        player1.isRightPressed = false;
-    } else if (ev.keyCode == 65) {
-        player1.isLeftPressed = false;
+    if (keyState === 'keydown') {
+        isKeyPressed = true;
+    } else if (keyState === 'keyup') {
+        isKeyPressed = false;
     }
-}, false);
 
-document.addEventListener('keydown', function (ev) {
-    if (ev.keyCode == 39) {
-        player2.isRightPressed = true;
-    } else if (ev.keyCode == 37) {
-        player2.isLeftPressed = true;
-    }
-}, false);
+    document.addEventListener(keyState, function (ev) {
+        if (ev.keyCode == keyCodeLeft) {
+            playerNumber.isLeftPressed = isKeyPressed;
+        }else if (ev.keyCode == keyCodeRight) {
+            playerNumber.isRightPressed = isKeyPressed;
+        }
+    }, false);
+});
 
-document.addEventListener('keyup', function (ev) {
-    if (ev.keyCode == 39) {
-        player2.isRightPressed = false;
-    } else if (ev.keyCode == 37) {
-        player2.isLeftPressed = false;
-    }
-}, false);
+addEventListener(player1, 'keydown', 65, 68);
+addEventListener(player1, 'keyup', 65, 68);
+addEventListener(player2, 'keydown', 37, 39);
+addEventListener(player2, 'keyup', 37, 39);
