@@ -39,7 +39,8 @@ var player = (function () {
 			player.x + (CONSTANTS.PLAYER_RADIUS + 2) * (player.xModifier * modifierNormalizer),
 			player.y + (CONSTANTS.PLAYER_RADIUS + 2) * (player.yModifier * modifierNormalizer), 1, 1).data;
 		if (colors[0] !== 0 || colors[2] !== 0 || colors[1] !== 0) {
-			console.log(player.name  + ' - R:' + colors[0] + ' G:' + colors[1] + ' B:' + colors[2] + ' A:' + colors[3] + ' mV:' + modifierNormalizer + ' Xm:' + player.xModifier + ' Ym:' + player.yModifier);
+			//console.log(player.name  + ' - R:' + colors[0] + ' G:' + colors[1] + ' B:' + colors[2] + ' A:' + colors[3] + ' mV:' + modifierNormalizer + ' Xm:' + player.xModifier + ' Ym:' + player.yModifier);
+			player.states.alive = false;
 		}
 	}
 		
@@ -68,6 +69,7 @@ var player = (function () {
             this.movementAngle = 0;
             this.isLeftPressed = false;
             this.isRightPressed = false;
+			this.states = { alive: true };
             return this;
         }
     });
@@ -90,11 +92,13 @@ var player = (function () {
 
     Object.defineProperty(player, 'move', {
         value: function () {
-			checkCollision(this);
-            changeMovementAngle(this);
-            changeModifiers(this);
-            changePosition(this);
-            drawPath(this);
+			if(this.states.alive){
+				checkCollision(this);
+				changeMovementAngle(this);
+				changeModifiers(this);
+				changePosition(this);
+				drawPath(this);
+			}
         }
     });
 	
