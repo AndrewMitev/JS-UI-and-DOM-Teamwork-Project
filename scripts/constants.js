@@ -1,0 +1,4 @@
+var CONSTANTS = {
+    PLAYER_RADIUS: 5,
+    MOVEMENT_ANGLE_CHANGE: 4
+};

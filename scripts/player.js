@@ -29,8 +29,8 @@ var player = (function () {
     }
 
     var currentId = 0,
-        fieldWidth = parseInt(gamefield.getAttribute('width')),
-        fieldHeight = parseInt(gamefield.getAttribute('height')),
+        fieldWidth = parseInt(gameField.getAttribute('width')),
+        fieldHeight = parseInt(gameField.getAttribute('height')),
         player = Object.create({});
 
     Object.defineProperty(player, 'init', {
