@@ -32,6 +32,17 @@ var player = (function () {
 		if(player.x > fieldWidth) player.x = 0;
     }
 
+	function checkCollision(player) {
+		var modifierVectorLength = Math.sqrt(player.xModifier * player.xModifier + player.yModifier * player.yModifier);
+		var modifierNormalizer = 1 / modifierVectorLength;
+		var colors = gameFieldCtx.getImageData(
+			player.x + (CONSTANTS.PLAYER_RADIUS + 2) * (player.xModifier * modifierNormalizer),
+			player.y + (CONSTANTS.PLAYER_RADIUS + 2) * (player.yModifier * modifierNormalizer), 1, 1).data;
+		if (colors[0] !== 0 || colors[2] !== 0 || colors[1] !== 0) {
+			console.log(player.name  + ' - R:' + colors[0] + ' G:' + colors[1] + ' B:' + colors[2] + ' A:' + colors[3] + ' mV:' + modifierNormalizer + ' Xm:' + player.xModifier + ' Ym:' + player.yModifier);
+		}
+	}
+		
     function drawPath(player) {
         gameFieldCtx.fillStyle = player.fillStyle;
         gameFieldCtx.beginPath();
@@ -76,14 +87,17 @@ var player = (function () {
         }
     });
 
+
     Object.defineProperty(player, 'move', {
         value: function () {
+			checkCollision(this);
             changeMovementAngle(this);
             changeModifiers(this);
             changePosition(this);
             drawPath(this);
         }
     });
+	
 
     return player;
 }());
