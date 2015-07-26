@@ -7,10 +7,7 @@ Mandatory tasks:
 * Event listener on player creation
   - function that requires 2 arguments (buttons to move with)
 * Improve collision - Yani
-* Background (SVG behind canvas) - Lyuba
 * Items (on the SVG with the background or new one) - Yane
-* Improve code quality - Yane and NIkola (first pass done)
-  - move random values to the constants variable
 * Menu - Andrei
   - a way to decide how many players will take part
   - fields for player's name and buttons to use and color
@@ -18,8 +15,7 @@ Mandatory tasks:
 * Scores - Andrei
 * Scoreboard Ц Yane and Nikola ??? јко н€ма да го прави Andrei
   - containing player's name and score
-* PlayerArray (max 4)
-  - improve render function (foreach players)
+* PlayerArray (max 4) (What about key-controls? It supposed four people to play together at same keyboard?)
 
 Optional tasks:
 ----------------
@@ -42,3 +38,7 @@ Completed Tasks:
   - code separated to different files
   - repeated code extracted to functions
   - naming improved
+  - render function cleaned up
+* Design stuff - Yane
+  - random colors for player paths
+  - better-looking gamefield and background

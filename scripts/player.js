@@ -84,5 +84,5 @@ var player = (function () {
     return player;
 }());
 
-var player1 = Object.create(player).init('PlayerOne', 'green');
-var player2 = Object.create(player).init('PlayerTwo', 'blue');
+var player1 = Object.create(player).init('PlayerOne', '#'+Math.random().toString(16).substr(-6));
+var player2 = Object.create(player).init('PlayerTwo', '#'+Math.random().toString(16).substr(-6));
