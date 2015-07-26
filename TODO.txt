@@ -19,7 +19,7 @@ Mandatory tasks:
 * Scoreboard Ц Yane and Nikola ??? јко н€ма да го прави Andrei
   - containing player's name and score
 * PlayerArray (max 4)
-  - improve beginGame function (foreach players)
+  - improve render function (foreach players)
 
 Optional tasks:
 ----------------

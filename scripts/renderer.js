@@ -1,4 +1,4 @@
-var beginGame = (function animationFrame() {
+var render = (function animationFrame() {
     var modifierVectorLength = Math.sqrt(Math.abs(player1.xModifier, player1.yModifier));
     var modifierNormalizer = 1 / modifierVectorLength;
 
@@ -9,6 +9,8 @@ var beginGame = (function animationFrame() {
         console.log(colors[0] + ' ' + colors[1] + ' ' + colors[2] + " " + colors[3]);
     }
 
+    player1.update();
+    player2.update();
     drawPath(player1, 'green');
     drawPath(player2, 'blue');
 

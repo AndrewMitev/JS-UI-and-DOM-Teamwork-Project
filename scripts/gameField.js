@@ -1,8 +1,9 @@
 var gameField = document.getElementById('game-field'),
     gameFieldCtx = gameField.getContext('2d'),
+    i,
 
     drawDashedLine = (function (fromX, fromY, toX, toY, count, direction) {
-        for (var i = 0; i < count; i++) {
+        for (i = 0; i < count; i++) {
             gameFieldCtx.beginPath();
             gameFieldCtx.setLineDash([10, 1]);
 
