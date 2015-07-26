@@ -42,14 +42,14 @@ var player = (function () {
         player = Object.create({});
 
     Object.defineProperty(player, 'init', {
-        value: function (name, fillStyle) {
+        value: function (name) {
             this.x = parseInt(Math.random() * fieldWidth);
             this.y = parseInt(Math.random() * fieldHeight);
             this.xModifier = 1;
             this.yModifier = 0;
             this.id = ++currentId;
             this.name = name;
-            this.fillStyle = fillStyle;
+            this.fillStyle = '#'+Math.random().toString(16).substr(-6);
             this.movementAngle = 0;
             this.isLeftPressed = false;
             this.isRightPressed = false;
@@ -84,5 +84,5 @@ var player = (function () {
     return player;
 }());
 
-var player1 = Object.create(player).init('PlayerOne', '#'+Math.random().toString(16).substr(-6));
-var player2 = Object.create(player).init('PlayerTwo', '#'+Math.random().toString(16).substr(-6));
+var player1 = Object.create(player).init('PlayerOne');
+var player2 = Object.create(player).init('PlayerTwo');
