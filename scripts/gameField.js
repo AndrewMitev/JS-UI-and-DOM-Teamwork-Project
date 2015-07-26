@@ -21,5 +21,3 @@ var gameField = document.getElementById('game-field'),
         }
     });
 
-drawDashedLine(0, 70, 1000, 70, 7, 'horizontal');
-drawDashedLine(70, 0, 70, 500, 14, 'vertical');
