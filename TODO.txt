@@ -1,0 +1,44 @@
+To-Do List
+-----------
+
+Mandatory tasks:
+-----------------
+* Player state (dead/alive) - Yani
+* Event listener on player creation
+  - function that requires 2 arguments (buttons to move with)
+* Improve collision - Yani
+* Background (SVG behind canvas) - Lyuba
+* Items (on the SVG with the background or new one) - Yane
+* Improve code quality - Yane and NIkola (first pass done)
+  - move random values to the constants variable
+* Menu - Andrei
+  - a way to decide how many players will take part
+  - fields for player's name and buttons to use and color
+  - a button to start the game
+* Scores - Andrei
+* Scoreboard Ц Yane and Nikola ??? јко н€ма да го прави Andrei
+  - containing player's name and score
+* PlayerArray (max 4)
+  - improve beginGame function (foreach players)
+
+Optional tasks:
+----------------
+* Unit testing
+* Move player size (radius) to player initialization
+  - if there will be items to increase size
+* Pausing (triggered by button or key)
+* Sounds
+* Items (appearing on the SVG)
+
+Completed Tasks:
+-----------------
+* Player creation - Vesko
+  - initialization (name, id, modifiers)
+  - functions for updating position
+* Event listeners logic - Vesko 
+* Collision detection logic - Vesko and Yani
+* Path drawing logic - Vesko
+* Code quality - Yane
+  - code separated to different files
+  - repeated code extracted to functions
+  - naming improved
