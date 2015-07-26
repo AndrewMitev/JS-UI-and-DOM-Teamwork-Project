@@ -26,6 +26,10 @@ var player = (function () {
     function changePosition(player) {
         player.x += 2 * player.xModifier;
         player.y += 2 * player.yModifier;
+		if(player.y < 0) player.y = fieldHeight;
+		if(player.y > fieldHeight) player.y = 0;
+		if(player.x < 0) player.x = fieldWidth;
+		if(player.x > fieldWidth) player.x = 0;
     }
 
     function drawPath(player) {
