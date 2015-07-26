@@ -9,10 +9,8 @@ var render = (function animationFrame() {
         console.log(colors[0] + ' ' + colors[1] + ' ' + colors[2] + " " + colors[3]);
     }
 
-    player1.update();
-    player2.update();
-    drawPath(player1, 'green');
-    drawPath(player2, 'blue');
+    player1.move();
+    player2.move();
 
     requestAnimationFrame(animationFrame);
 }());

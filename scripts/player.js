@@ -28,19 +28,28 @@ var player = (function () {
         player.y += 2 * player.yModifier;
     }
 
+    function drawPath(player) {
+        gameFieldCtx.fillStyle = player.fillStyle;
+        gameFieldCtx.beginPath();
+        gameFieldCtx.arc(player.x, player.y, CONSTANTS.PLAYER_RADIUS, 0, 2 * Math.PI);
+        gameFieldCtx.fill();
+        gameFieldCtx.closePath();
+    }
+
     var currentId = 0,
         fieldWidth = parseInt(gameField.getAttribute('width')),
         fieldHeight = parseInt(gameField.getAttribute('height')),
         player = Object.create({});
 
     Object.defineProperty(player, 'init', {
-        value: function (name) {
+        value: function (name, fillStyle) {
             this.x = parseInt(Math.random() * fieldWidth);
             this.y = parseInt(Math.random() * fieldHeight);
             this.xModifier = 1;
             this.yModifier = 0;
             this.id = ++currentId;
             this.name = name;
+            this.fillStyle = fillStyle;
             this.movementAngle = 0;
             this.isLeftPressed = false;
             this.isRightPressed = false;
@@ -63,16 +72,17 @@ var player = (function () {
         }
     });
 
-    Object.defineProperty(player, 'update', {
+    Object.defineProperty(player, 'move', {
         value: function () {
             changeMovementAngle(this);
             changeModifiers(this);
             changePosition(this);
+            drawPath(this);
         }
     });
 
     return player;
 }());
 
-var player1 = Object.create(player).init('PlayerOne');
-var player2 = Object.create(player).init('PlayerTwo');
+var player1 = Object.create(player).init('PlayerOne', 'green');
+var player2 = Object.create(player).init('PlayerTwo', 'blue');
