@@ -2,8 +2,8 @@ var gameField = document.getElementById('game-field'),
     gameFieldCtx = gameField.getContext('2d'),
     i,
 
-    drawDashedLine = (function (fromX, fromY, toX, toY, count, direction) {
-        for (i = 0; i < count; i++) {
+    drawDashedLine = (function (fromX, fromY, toX, toY, numberOfLines, direction) {
+        for (i = 0; i < numberOfLines; i += 1) {
             gameFieldCtx.beginPath();
             gameFieldCtx.setLineDash([10, 1]);
 
@@ -21,5 +21,5 @@ var gameField = document.getElementById('game-field'),
         }
     });
 
-drawDashedLine(0, 70, 1000, 70, 24, 'horizontal');
-drawDashedLine(70, 0, 70, 500, 49, 'vertical');
+drawDashedLine(0, 70, 1000, 70, 7, 'horizontal');
+drawDashedLine(70, 0, 70, 500, 14, 'vertical');

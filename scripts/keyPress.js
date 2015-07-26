@@ -1,4 +1,4 @@
-var addEventListener = (function(playerNumber, keyState, keyCodeLeft, keyCodeRight){
+var addEventListener = (function (playerNumber, keyState, keyCodeLeft, keyCodeRight) {
     var isKeyPressed;
 
     if (keyState === 'keydown') {
@@ -8,9 +8,9 @@ var addEventListener = (function(playerNumber, keyState, keyCodeLeft, keyCodeRig
     }
 
     document.addEventListener(keyState, function (ev) {
-        if (ev.keyCode == keyCodeLeft) {
+        if (ev.keyCode === keyCodeLeft) {
             playerNumber.isLeftPressed = isKeyPressed;
-        }else if (ev.keyCode == keyCodeRight) {
+        } else if (ev.keyCode === keyCodeRight) {
             playerNumber.isRightPressed = isKeyPressed;
         }
     }, false);
