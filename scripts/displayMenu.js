@@ -4,7 +4,7 @@ var displayMenu =  (function(canvas, cntx){
         fontSelected = '28px verdana',
         startGameTextHeight = canvas.height / 4,
         optionsTextHeight = canvas.height / 2.5,
-        selectedOption = false;
+        selectedOptions = false;
 
     drawText(fontSelected, color, 'Start Game',startGameTextHeight);
     drawText(normalFont, color, 'Option',optionsTextHeight);
@@ -26,22 +26,22 @@ var displayMenu =  (function(canvas, cntx){
             cntx.clearRect(0, 0, canvas.width, canvas.height);
             drawText(fontSelected, color, 'Start Game',startGameTextHeight);
             drawText(normalFont, color, 'Option',optionsTextHeight);
-            selectedOption = true;
+            selectedOption = false;
         }
         else if(ev.keyCode === 40){
             cntx.clearRect(0, 0, canvas.width, canvas.height);
             drawText(normalFont, color, 'Start Game',startGameTextHeight);
             drawText(fontSelected, color, 'Option',optionsTextHeight);
-            selectedOption = false;
+            selectedOption = true;
         }
         else if(ev.keyCode === 13){
-            if(selectedOption){
+            if(selectedOptions){
+                //Options
+            }
+            else{
                 cntx.clearRect(0, 0, canvas.width, canvas.height);
                 document.removeEventListener('keydown', changeMenuOption);
                 render();
-            }
-            else{
-                //Options
             }
         }
     });
