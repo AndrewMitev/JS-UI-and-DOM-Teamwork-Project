@@ -1,4 +1,6 @@
 canvas {
+    position: relative;
+
 	border: 1px solid black;
     background-color: white;
     opacity: 1;
@@ -7,4 +9,32 @@ canvas {
 body {
     background-image: url('../images/background.jpg');
     background-size: 100% auto;
+}
+
+form{
+    position: absolute;
+    top: 90px;
+    left: 350px;
+    display: none;
+}
+
+button#addPlayer{
+    position: absolute;
+    display: none;
+    top: 380px;
+    left: 150px;
+}
+
+button#save{
+    position: absolute;
+    display: none;
+    top: 380px;
+    left: 250px;
+}
+
+button#back {
+    position: absolute;
+    display: none;
+    top: 380px;
+    left: 350px;
 }
