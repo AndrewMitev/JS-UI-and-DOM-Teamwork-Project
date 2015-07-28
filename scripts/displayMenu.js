@@ -1,7 +1,7 @@
 var displayMenu =  (function(canvas, cntx){
-    var color = 'rgba(255, 50, 50, 0.6)',
-        normalFont = '20px verdana',
-        fontSelected = '28px verdana',
+    var color = 'rgba(215, 40, 40, 0.9)',
+        normalFont = 'bold 20px verdana',
+        fontSelected = 'bold 28px verdana',
         startGameTextHeight = canvas.height / 4,
         optionsTextHeight = canvas.height / 2.5,
         selectedOptions = false;
