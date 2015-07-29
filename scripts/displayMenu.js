@@ -8,6 +8,10 @@ var displayMenu =  (function(canvas, cntx){
 
     drawText(fontSelected, color, 'Start Game',startGameTextHeight);
     drawText(normalFont, color, 'Options',optionsTextHeight);
+    cntx.beginPath();
+    cntx.lineTo(100, 100);
+    cntx.stroke();
+    cntx.closePath();
 
     function drawText(font, fillstyle, optionName, height) {
         cntx.font = font;
@@ -35,15 +39,16 @@ var displayMenu =  (function(canvas, cntx){
             selectedOptions = true;
         }
         else if(ev.keyCode === 13){
+            document.removeEventListener('keydown', changeMenuOption);
+
             if(selectedOptions){
-                //Options
+                displayOptionsMenu();
             }
             else{
                 document.removeEventListener('keydown', changeMenuOption);
-                //drawScoreboard(players);
+                drawScoreboard(players);
                 render();
             }
         }
-
     });
 });
