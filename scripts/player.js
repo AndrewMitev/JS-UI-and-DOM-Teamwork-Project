@@ -106,13 +106,29 @@ var player = (function () {
     return player;
 }());
 
-var player1 = Object.create(player).init('PlayerOne');
-var player2 = Object.create(player).init('PlayerTwo');
-var player3 = Object.create(player).init('PlayerThree');
-var player4 = Object.create(player).init('PlayerFour');
-//Array for testing scoreboard
-var players=[];
+var playersToAdd = [],
+    players = [];
+
+var player1 = Object.create(player).init('PlayerOne'),
+    player2 = Object.create(player).init('PlayerTwo'),
+    player3,
+    player4;
+
 players.push(player1);
 players.push(player2);
-players.push(player3);
-players.push(player4);
+
+function AddPlayers(){
+    if(playersToAdd[0]){
+        player3 = Object.create(player).init(playersToAdd[0].name);
+        addEventListener(player3, 'keydown', playersToAdd[0].moveLeft, playersToAdd[0].moveRight);
+        addEventListener(player3, 'keyup', playersToAdd[0].moveLeft, playersToAdd[0].moveRight);
+        players.push(player3);
+    }
+
+    if(playersToAdd[1]){
+        player4 = Object.create(player).init(playersToAdd[1].name);
+        addEventListener(player4, 'keydown', playersToAdd[1].moveLeft, playersToAdd[1].moveRight);
+        addEventListener(player4, 'keyup', playersToAdd[1].moveLeft, playersToAdd[1].moveRight);
+        players.push(player4);
+    }
+}

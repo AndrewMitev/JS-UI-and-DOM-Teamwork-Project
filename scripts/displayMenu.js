@@ -28,17 +28,17 @@ var displayMenu =  (function(canvas, cntx){
     document.addEventListener('keydown', function changeMenuOption(ev){
         cntx.clearRect(0, 0, canvas.width, canvas.height);
 
-        if(ev.keyCode === 38) {
+        if(ev.keyCode === 38) { //switch menu items
             drawText(fontSelected, color, 'Start Game',startGameTextHeight);
             drawText(normalFont, color, 'Options',optionsTextHeight);
             selectedOptions = false;
         }
-        else if(ev.keyCode === 40){
+        else if(ev.keyCode === 40){ //switch menu items
             drawText(normalFont, color, 'Start Game',startGameTextHeight);
             drawText(fontSelected, color, 'Options',optionsTextHeight);
             selectedOptions = true;
         }
-        else if(ev.keyCode === 13){
+        else if(ev.keyCode === 13){ //Enter is pressed
             document.removeEventListener('keydown', changeMenuOption);
 
             if(selectedOptions){
@@ -47,6 +47,7 @@ var displayMenu =  (function(canvas, cntx){
             else{
                 document.removeEventListener('keydown', changeMenuOption);
                 //drawScoreboard(players);
+                AddPlayers();
                 render();
             }
         }
