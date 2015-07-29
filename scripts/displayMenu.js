@@ -46,8 +46,8 @@ var displayMenu =  (function(canvas, cntx){
             }
             else{
                 document.removeEventListener('keydown', changeMenuOption);
-                //drawScoreboard(players);
                 AddPlayers();
+                drawScoreboard(players);
                 render();
             }
         }
