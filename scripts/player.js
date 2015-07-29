@@ -41,9 +41,7 @@ var player = (function () {
 			player.y + (CONSTANTS.PLAYER_RADIUS + 2) * (player.yModifier * modifierNormalizer), 1, 1).data;
 		if (colors[0] !== 0 || colors[2] !== 0 || colors[1] !== 0) {
 			//console.log(player.name  + ' - R:' + colors[0] + ' G:' + colors[1] + ' B:' + colors[2] + ' A:' + colors[3] + ' mV:' + modifierNormalizer + ' Xm:' + player.xModifier + ' Ym:' + player.yModifier);
-			player.states.alive = false;
-
-
+			player.states.isAlive = false;
 		}
 	}
 		
@@ -72,7 +70,7 @@ var player = (function () {
             this.movementAngle = 0;
             this.isLeftPressed = false;
             this.isRightPressed = false;
-			this.states = { alive: true };
+			this.states = { isAlive: true };
             this.points=0;
             return this;
         }
@@ -93,10 +91,9 @@ var player = (function () {
         }
     });
 
-
     Object.defineProperty(player, 'move', {
         value: function () {
-			if(this.states.alive){
+			if(this.states.isAlive){
 				checkCollision(this);
 				changeMovementAngle(this);
 				changeModifiers(this);
@@ -106,7 +103,6 @@ var player = (function () {
         }
     });
 	
-
     return player;
 }());
 
