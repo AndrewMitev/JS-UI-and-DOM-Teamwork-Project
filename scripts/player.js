@@ -35,12 +35,15 @@ var player = (function () {
 	function checkCollision(player) {
 		var modifierVectorLength = Math.sqrt(player.xModifier * player.xModifier + player.yModifier * player.yModifier);
 		var modifierNormalizer = 1 / modifierVectorLength;
+
 		var colors = gameFieldCtx.getImageData(
 			player.x + (CONSTANTS.PLAYER_RADIUS + 2) * (player.xModifier * modifierNormalizer),
 			player.y + (CONSTANTS.PLAYER_RADIUS + 2) * (player.yModifier * modifierNormalizer), 1, 1).data;
 		if (colors[0] !== 0 || colors[2] !== 0 || colors[1] !== 0) {
 			//console.log(player.name  + ' - R:' + colors[0] + ' G:' + colors[1] + ' B:' + colors[2] + ' A:' + colors[3] + ' mV:' + modifierNormalizer + ' Xm:' + player.xModifier + ' Ym:' + player.yModifier);
 			player.states.alive = false;
+
+
 		}
 	}
 		
@@ -70,6 +73,7 @@ var player = (function () {
             this.isLeftPressed = false;
             this.isRightPressed = false;
 			this.states = { alive: true };
+            this.points=0;
             return this;
         }
     });
@@ -108,3 +112,11 @@ var player = (function () {
 
 var player1 = Object.create(player).init('PlayerOne');
 var player2 = Object.create(player).init('PlayerTwo');
+var player3 = Object.create(player).init('PlayerThree');
+var player4 = Object.create(player).init('PlayerFour');
+//Array for testing scoreboard
+var players=[];
+players.push(player1);
+players.push(player2);
+players.push(player3);
+players.push(player4);
