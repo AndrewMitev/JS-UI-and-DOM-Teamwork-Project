@@ -1,9 +1,9 @@
 var displayMenu = (function (canvas, cntx) {
-    var color = 'rgba(215, 40, 40, 0.9)',
-        normalFont = 'bold 20px verdana',
-        fontSelected = 'bold 28px verdana',
-        startGameTextHeight = canvas.height / 4,
-        optionsTextHeight = canvas.height / 2.5,
+    var color = '#c34301',
+        normalFont = 'bold 28px verdana',
+        fontSelected = 'bold 36px verdana',
+        startGameTextHeight = canvas.height / 2.5,
+        optionsTextHeight = canvas.height / 2.0,
         selectedOptions = false,
         startGameText = 'Start Game',
         optionsText = 'Options';
@@ -20,6 +20,7 @@ var displayMenu = (function (canvas, cntx) {
             var measurement = ctx.measureText(text);
             var x = (ctx.canvas.width - measurement.width) / 2;
             ctx.fillText(text, x, y);
+            ctx.strokeText(text, x, y);
         }
     }
 

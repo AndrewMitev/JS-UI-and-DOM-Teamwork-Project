@@ -6,10 +6,11 @@ canvas {
 
 #scoreboard {
     box-sizing: border-box;
-    border: 5px solid burlywood;
+    border: 5px solid saddlebrown;
     border-radius: 10px;
     background: url(../svg/backgroundSand.svg);
     background-size: contain;
+    margin-top: 5px;
 }
 
 #pop-up{
