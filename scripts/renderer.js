@@ -1,44 +1,51 @@
 var endOfRound=false;
 var round=1;
 var pop=document.getElementById('pop-up');
-var isActive = true;
 var started=false;
-
+var isPaused=false;
+function checkPoints(players){
+    for (var currentPlayer in players) {
+        var maxPoints = (players.length - 1) * 3;
+        if (players[currentPlayer].points === maxPoints) {
+            gameFieldCtx.clearRect(0, 0, gameField.width, gameField.height);
+            drawScoreboard(players);
+            drawWinner(players[currentPlayer]);
+            cancelRequestAnimationFrame(render);
+        }
+    }
+}
+function checkForRoundEnd(players){
+    var alivePlayers = aliveCount(players);
+    if (alivePlayers === 1) {
+        drawScoreboard(players);
+        return true;
+    }
+}
 var render = (function animationFrame() {
+    if(!isPaused){
+        drawRound(round,'Space');
+        if(started) {
+            pop.style.zIndex = -1;
 
-    if(started&&isActive) {
-        if (isActive && !endOfRound) {
             for (var currentPlayer in players) {
-                var maxPoints = (players.length - 1) * 3;
                 players[currentPlayer].move();
-                var alivePlayers = aliveCount(players);
-                if (alivePlayers === 1) {
-                    endOfRound = true;
-                    drawScoreboard(players);
-                }
-                if (players[currentPlayer].points === maxPoints) {
-                    gameFieldCtx.clearRect(0, 0, gameField.width, gameField.height);
-                    drawScoreboard(players);
-                    drawWinner(players[currentPlayer]);
-                    cancelRequestAnimationFrame();
-                }
+            }
+            checkPoints(players);
+            checkForRoundEnd(players);
+            endOfRound = checkForRoundEnd(players);
+            if (endOfRound) {
+                gameFieldCtx.clearRect(0, 0, gameField.width, gameField.height);
+                players.forEach(function (player) {
+                    reinitPlayer(player);
+                });
+                round += 1;
+                started=false;
+
             }
             requestAnimationFrame(animationFrame);
-        } else if (isActive && endOfRound) {
-            gameFieldCtx.clearRect(0, 0, gameField.width, gameField.height);
-            players.forEach(function (player) {
-                reinitPlayer(player);
-            });
-            round += 1;
-            drawRound(round, 'Space');
-            started = false;
-            endOfRound = false;
-
-            render();
         }
-
     }
-    else if (!isActive&&started ) {
+    else {
         drawPause('p');
     }
 });
@@ -48,21 +55,20 @@ displayMenu(gameField, gameFieldCtx);
 document.addEventListener('keydown', function Pause(ev) {
 
     if (ev.keyCode == 80) {
-        if (!isActive) {
-            pop.style.zIndex=-1;
+        if (isPaused) {
+            pop.style.zIndex=-11;
             requestAnimationFrame(render);
         }
-        isActive = !isActive;
+        isPaused = !isPaused;
     }
 }, false);
 
 document.addEventListener('keydown', function Start(ev) {
 
     if (ev.keyCode == 32) {
-        started = true;
-        pop.style.zIndex = -1;
-        requestAnimationFrame(render);
+
+        started=true;
+        render();
 
     }
-
 },false);
