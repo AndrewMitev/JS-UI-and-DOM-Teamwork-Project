@@ -39,7 +39,13 @@ var player = (function () {
             player.x = 0;
         }
     }
-
+    function givePointsToAlivePlayers(){
+        players.forEach(function updatePlayerScore(player){
+            if(player.states.isAlive){
+                player.points+=1;
+            }
+        })
+    }
     function checkCollision(player) {
         var modifierVectorLength = Math.sqrt(player.xModifier * player.xModifier + player.yModifier * player.yModifier);
         var modifierNormalizer = 1 / modifierVectorLength;
@@ -50,6 +56,7 @@ var player = (function () {
         if (colors[0] !== 0 || colors[1] !== 0 || colors[2] !== 0) {
             //console.log(player.name  + ' - R:' + colors[0] + ' G:' + colors[1] + ' B:' + colors[2] + ' A:' + colors[3] + ' mV:' + modifierNormalizer + ' Xm:' + player.xModifier + ' Ym:' + player.yModifier);
             player.states.isAlive = false;
+            givePointsToAlivePlayers();
         }
     }
 
@@ -143,4 +150,23 @@ function AddPlayers() {
         addEventListener(player4, 'keyup', playersToAdd[1].moveLeft, playersToAdd[1].moveRight);
         players.push(player4);
     }
+}
+
+function reinitPlayer(player){
+    var width = parseInt(gameField.getAttribute('width')),
+        height = parseInt(gameField.getAttribute('height'));
+    player.x=parseInt(Math.random() * width);
+    player.y=parseInt(Math.random() * height);
+    player.states.isAlive=true;
+
+
+}
+function aliveCount(players){
+    var counter=0;
+    for(var i=0;i<players.length;i+=1){
+        if(players[i].states.isAlive){
+            counter+=1;
+        }
+    }
+    return counter;
 }

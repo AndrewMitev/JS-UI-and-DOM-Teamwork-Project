@@ -1,10 +1,10 @@
 var numberOfPlayers = 0; //player0 and player1 - third and fourth player
 
-var playerControlsData = (function () {
+var playerControlsData = (function(){
     var selectedPlayersControls = Object.create({});
 
     Object.defineProperty(selectedPlayersControls, 'init', {
-        value: function () {
+        value: function(){
             this.leftControls = [];
             this.rightControls = [];
 
@@ -13,13 +13,13 @@ var playerControlsData = (function () {
     });
 
     Object.defineProperty(selectedPlayersControls, 'addLeftControl', {
-        value: function (value) {
+        value: function(value){
             this.leftControls.push(value);
         }
     });
 
     Object.defineProperty(selectedPlayersControls, 'addRightControl', {
-        value: function (value) {
+        value: function(value){
             this.rightControls.push(value);
         }
     });
@@ -29,7 +29,7 @@ var playerControlsData = (function () {
 
 var controlsData = Object.create(playerControlsData).init();
 
-var displayOptionsMenu = (function () {
+var displayOptionsMenu = (function(){
     var addPlayerButton = document.getElementById('addPlayer'),
         saveButton = document.getElementById('save'),
         backButton = document.getElementById('back');
@@ -41,8 +41,8 @@ var displayOptionsMenu = (function () {
     saveButton.style.display = 'block';
     backButton.style.display = 'block';
 
-    addPlayerButton.onclick = function () {
-        if (numberOfPlayers === 2) {
+    addPlayerButton.onclick = function(){
+        if(numberOfPlayers === 2){
             alert('Maximum Four Players Allowed!');
             return;
         }
@@ -63,9 +63,9 @@ var displayOptionsMenu = (function () {
         nameInputSpan.innerHTML = 'Dobby';
         nameSpan.innerHTML = "Please enter nickname.";
 
+        form.appendChild(nameSpan);
         form.appendChild(nameInput);
         form.appendChild(nameInputSpan);
-        form.appendChild(nameSpan);
         form.appendChild(document.createElement('br'));
 
         leftControlInput.setAttribute('type', 'text');
@@ -74,9 +74,9 @@ var displayOptionsMenu = (function () {
         leftControlInputSpan.innerHTML = 'Enter key';
         leftControlSpan.innerHTML = "Move Left!";
 
+        form.appendChild(leftControlSpan);
         form.appendChild(leftControlInput);
         form.appendChild(leftControlInputSpan);
-        form.appendChild(leftControlSpan);
         form.appendChild(document.createElement('br'));
 
         rightControlInput.setAttribute('type', 'text');
@@ -85,19 +85,19 @@ var displayOptionsMenu = (function () {
         rightControlInputSpan.innerHTML = 'Enter key';
         rightControlSpan.innerHTML = 'Move right!';
 
+        form.appendChild(rightControlSpan);
         form.appendChild(rightControlInput);
         form.appendChild(rightControlInputSpan);
-        form.appendChild(rightControlSpan);
         form.appendChild(document.createElement('br'));
 
-        nameInputSpan.addEventListener('click', function (ev) {
+        nameInputSpan.addEventListener('click', function(ev){
             this.style.display = 'none';
             nameInput.style.display = 'inline-block';
             nameInput.setAttribute('autofocus', 'autofocus');
         }, false);
 
-        nameInput.addEventListener('keydown', function (ev) {
-            if (ev.keyCode === 13) { //enter is pressed!
+        nameInput.addEventListener('keydown', function(ev) {
+            if(ev.keyCode === 13) { //enter is pressed!
                 nameInputSpan.innerHTML = this.value;
                 this.style.display = 'none';
                 nameInputSpan.style.display = 'inline-block';
@@ -107,20 +107,20 @@ var displayOptionsMenu = (function () {
         setMovementElements(leftControlInput, leftControlInputSpan, 'left');
         setMovementElements(rightControlInput, rightControlInputSpan, 'right');
 
-        function setMovementElements(controlInput, controlInputSpan, direction) {
-            controlInput.addEventListener('keydown', function (ev) {
+        function setMovementElements(controlInput, controlInputSpan, direction){
+            controlInput.addEventListener('keydown', function(ev) {
                 controlInputSpan.innerHTML = String.fromCharCode(ev.keyCode);
                 controlInputSpan.style.display = 'inline-block';
                 controlInput.style.display = 'none';
-                if (direction === 'left') {
+                if(direction === 'left'){
                     controlsData.addLeftControl(ev.keyCode);
                 }
-                else if (direction === 'right') {
+                else if(direction === 'right'){
                     controlsData.addRightControl(ev.keyCode);
                 }
             }, false);
 
-            controlInputSpan.addEventListener('click', function (ev) {
+            controlInputSpan.addEventListener('click', function(ev){
                 controlInputSpan.style.display = 'none';
                 controlInput.style.display = 'inline-block';
                 controlInput.setAttribute('autofocus', 'autofocus');
@@ -128,9 +128,9 @@ var displayOptionsMenu = (function () {
         }
 
         numberOfPlayers++;
-    };
+    }
 
-    backButton.onclick = function (ev) {
+    backButton.onclick = function(ev){
         form.style.display = 'none';
         addPlayerButton.style.display = 'none';
         saveButton.style.display = 'none';
@@ -141,20 +141,20 @@ var displayOptionsMenu = (function () {
         displayMenu(gameField, gameFieldCtx);
     };
 
-    saveButton.onclick = function () {
+    saveButton.onclick = function(){
         var isThirdPlayerExistent = Boolean(document.getElementById('player0')),
             isFourthPlayerExistent = Boolean(document.getElementById('player1'));
 
-        if (isThirdPlayerExistent) {
-            if (!AllFieldsAreFilled(0)) {
+        if(isThirdPlayerExistent){
+            if(!AllFieldsAreFilled(0)){
                 alert('Must enter all fields!');
                 return;
             }
             InsertPlayer(0);
         }
 
-        if (isFourthPlayerExistent) {
-            if (!AllFieldsAreFilled(1)) {
+        if(isFourthPlayerExistent){
+            if(!AllFieldsAreFilled(1)){
                 alert('Must enter all fields!');
                 return;
             }
@@ -165,25 +165,25 @@ var displayOptionsMenu = (function () {
         alert('Done.');
     };
 
-    function AllFieldsAreFilled(playerId) {
+    function AllFieldsAreFilled(playerId){
         var name = document.getElementById('player' + playerId),
             leftControl = document.getElementById('leftControlPlayer' + playerId),
             rightControl = document.getElementById('rightControlPlayer' + playerId);
 
-        if (leftControl.innerHTML === 'Enter key' || rightControl.innerHTML === 'Enter key') {
+        if(leftControl.innerHTML === 'Enter key' || rightControl.innerHTML === 'Enter key'){
             return false;
         }
 
         return true;
     }
 
-    function InsertPlayer(id) {
+    function InsertPlayer(id){
         var name = document.getElementById('player' + id),
-            playerExists = playersToAdd.some(function (element) {
+            playerExists = playersToAdd.some(function(element){
                 return element.id === id;
             });
 
-        if (!playerExists) {
+        if(!playerExists) {
             playersToAdd.push({
                 id: id,
                 name: name.innerHTML,

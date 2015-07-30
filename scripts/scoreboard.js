@@ -4,7 +4,7 @@
 var drawScoreboard=function drawScoreboard(players){
     var scoreBoard = document.getElementById('scoreboard'),
         scoreboardCtx = scoreBoard.getContext('2d');
-
+        scoreboardCtx.clearRect(0,0,scoreBoard.width,scoreBoard.height-100);
         scoreboardCtx.font='32px Comic Sans MS ';
         scoreboardCtx.fillStyle='#c34301';
         scoreboardCtx.fillText('SCORES',(scoreBoard.width/3.5),40);

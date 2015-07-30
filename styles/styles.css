@@ -12,6 +12,15 @@ canvas {
     background-size: contain;
 }
 
+#pop-up{
+    position: absolute;
+    left: 250px;
+    top:100px;
+    z-index: -1;
+    border: 7px solid saddlebrown;
+    border-radius: 20px;
+}
+
 body {
     background-image: url('../images/forest.jpg');
     background-size: 100% auto;
