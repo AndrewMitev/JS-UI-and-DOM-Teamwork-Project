@@ -48,22 +48,53 @@ form {
 }
 
 button#addPlayer {
+    background-image: url(../images/AddPlayer.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
     position: absolute;
+    color: transparent;
+    width: 158px;
+    height: 66px;
     display: none;
     top: 380px;
     left: 150px;
 }
+#addPlayer:active {
+    background-image: url(../images/AddPlayerPushed.png);
+}
 
 button#save {
+    background-image: url(../images/Save.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
     position: absolute;
+    color: transparent;
+    width: 158px;
+    height: 66px;
     display: none;
     top: 380px;
-    left: 250px;
+    left: 300px;
+}
+#save:active {
+    background-image: url(../images/SavePushed.png);
 }
 
 button#back {
+    background-image: url(../images/Back.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
     position: absolute;
+    color: transparent;
+    width: 158px;
+    height: 66px;
     display: none;
     top: 380px;
-    left: 350px;
+    left: 450px;
+}
+
+#back:active {
+    background-image: url(../images/BackPushed.png);
 }
