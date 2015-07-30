@@ -48,6 +48,7 @@ var displayMenu = (function (canvas, cntx) {
                 AddPlayers();
                 drawScoreboard(players);
                // drawRound(round,'Space');
+                addInGameListeners();
                 render();
             }
         }

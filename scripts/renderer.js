@@ -10,7 +10,7 @@ function checkPoints(players){
             gameFieldCtx.clearRect(0, 0, gameField.width, gameField.height);
             drawScoreboard(players);
             drawWinner(players[currentPlayer]);
-            cancelRequestAnimationFrame(render);
+            return true;
         }
     }
 }
@@ -30,7 +30,10 @@ var render = (function animationFrame() {
             for (var currentPlayer in players) {
                 players[currentPlayer].move();
             }
-            checkPoints(players);
+            if(checkPoints(players)){
+                cancelAnimationFrame(animationFrame);
+                return;
+            }
             checkForRoundEnd(players);
             endOfRound = checkForRoundEnd(players);
             if (endOfRound) {
@@ -52,23 +55,26 @@ var render = (function animationFrame() {
 //render is called in displayMenu()
 displayMenu(gameField, gameFieldCtx);
 //Pause game with button "P"
-document.addEventListener('keydown', function Pause(ev) {
 
-    if (ev.keyCode == 80) {
-        if (isPaused) {
-            pop.style.zIndex=-11;
-            requestAnimationFrame(render);
+function addInGameListeners(){
+    document.addEventListener('keydown', function Pause(ev) {
+
+        if (ev.keyCode == 80) {
+            if (isPaused) {
+                pop.style.zIndex=-11;
+                requestAnimationFrame(render);
+            }
+            isPaused = !isPaused;
         }
-        isPaused = !isPaused;
-    }
-}, false);
+    }, false);
 
-document.addEventListener('keydown', function Start(ev) {
+    document.addEventListener('keydown', function Start(ev) {
 
-    if (ev.keyCode == 32) {
+        if (ev.keyCode == 32) {
 
-        started=true;
-        render();
+            started=true;
+            render();
 
-    }
-},false);
+        }
+    },false);
+}
