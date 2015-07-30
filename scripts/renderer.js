@@ -23,9 +23,9 @@ function checkForRoundEnd(players){
 }
 var render = (function animationFrame() {
     if(!isPaused){
-        drawRound(round,'Space');
-        if(started) {
-            pop.style.zIndex = -1;
+        //drawRound(round,'Space');
+        if(true) {
+            //pop.style.zIndex = -1;
 
             for (var currentPlayer in players) {
                 players[currentPlayer].move();
@@ -34,6 +34,7 @@ var render = (function animationFrame() {
                 cancelAnimationFrame(animationFrame);
                 return;
             }
+            flame.moveRandomly();
             checkForRoundEnd(players);
             endOfRound = checkForRoundEnd(players);
             if (endOfRound) {

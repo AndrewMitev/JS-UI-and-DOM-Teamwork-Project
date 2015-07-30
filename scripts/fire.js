@@ -10,7 +10,7 @@ var fire = (function () {
         self.onload = function () {
             gameFieldCtx.drawImage(self, self._x + range(), self._y + range());
         };
-        self.src = 'styles/fire.svg';
+        self.src = 'svg/fire.svg';
         return self;
     }
 
