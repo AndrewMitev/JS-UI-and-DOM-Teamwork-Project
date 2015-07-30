@@ -32,7 +32,7 @@ var drawScoreboard=function drawScoreboard(players){
         firstImage = new Image();
         firstImage.src = 'images/worm.png';
         firstImage.onload = function(){
-            scoreboardCtx.drawImage(firstImage, 200,370);
+            scoreboardCtx.drawImage(firstImage, 220,385);
         };
 
     }
