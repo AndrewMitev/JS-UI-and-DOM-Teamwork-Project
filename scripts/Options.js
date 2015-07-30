@@ -33,8 +33,8 @@ var displayOptionsMenu = (function(){
         nameInput.style.display = 'none';
         nameInputSpan.setAttribute('id', 'player' + numberOfPlayers);
         nameInputSpan.setAttribute('class', 'form-input-label');
-        nameInputSpan.innerHTML = 'Dobby';
-        nameSpan.innerHTML = "Please enter nickname.";
+        nameInputSpan.innerHTML = 'PlayerThree';
+        nameSpan.innerHTML = "Please enter nickname";
 
         formFieldsFragment.appendChild(nameSpan);
         formFieldsFragment.appendChild(nameInput);
@@ -85,7 +85,7 @@ var displayOptionsMenu = (function(){
         setMovementElements(rightControlInput, rightControlInputSpan, 'right');
 
         numberOfPlayers++;
-    }
+    };
 
     backButton.onclick = function(ev){
         form.style.display = 'none';

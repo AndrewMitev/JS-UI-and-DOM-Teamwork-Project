@@ -17,7 +17,7 @@ canvas {
     position: absolute;
     left: 250px;
     top:100px;
-    z-index: -1;
+    display: none;
     border: 7px solid saddlebrown;
     border-radius: 20px;
 }
@@ -43,7 +43,7 @@ h1 {
 form {
     position: absolute;
     top: 50px;
-    left: 250px;
+    left: 220px;
     display: none;
     font-size: 30px;
     color: rgb(195, 67, 0);
@@ -78,7 +78,7 @@ button#addPlayer {
     height: 66px;
     display: none;
     top: 380px;
-    left: 150px;
+    left: 258px;
 }
 #addPlayer:active {
     background-image: url(../images/AddPlayerPushed.png);
@@ -95,7 +95,7 @@ button#save {
     height: 66px;
     display: none;
     top: 380px;
-    left: 300px;
+    left: 408px;
 }
 #save:active {
     background-image: url(../images/SavePushed.png);
@@ -112,7 +112,7 @@ button#back {
     height: 66px;
     display: none;
     top: 380px;
-    left: 450px;
+    left: 558px;
 }
 
 #back:active {

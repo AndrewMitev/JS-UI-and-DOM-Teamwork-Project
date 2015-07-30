@@ -37,7 +37,7 @@ Completed Tasks:
   - a way to decide how many players will take part
   - fields for player's name and buttons to use and color
   - a button to start the game
-* Pausing (triggered by button or key) - Andrei
+* Pausing (triggered by button or key) - Nikola
 * Event listener on player creation - Andrei
   - function that requires 2 arguments (buttons to move with)
 * Scoreboard (partially) – Nikola

@@ -23,9 +23,9 @@ function checkForRoundEnd(players){
 }
 var render = (function animationFrame() {
     if(!isPaused){
-        //drawRound(round,'Space');
-        if(true) {
-            //pop.style.zIndex = -1;
+        drawRound(round,'Space');
+        if(started) {
+            pop.style.display = 'none';
 
             for (var currentPlayer in players) {
                 players[currentPlayer].move();

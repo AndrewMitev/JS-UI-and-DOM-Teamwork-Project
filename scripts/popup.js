@@ -13,11 +13,11 @@ var drawRound=function drawRound(round,button){
     popupCtx.strokeText('ROUND '+round,(popup.width/3),60);
     popupCtx.fillText('Press "'+button+'" to start!',(popup.width/10),110);
     popupCtx.strokeText('Press "'+button+'" to start!',(popup.width/10),110);
-    pop.style.zIndex=1;
+    pop.style.display='inline-block';
 
 };
 var drawPause=function drawPause(button){
-    pop.style.zIndex=1;
+    pop.style.display='inline-block';
     popupCtx.clearRect(0,0,popup.width,popup.height);
     popupCtx.font='35px Comic Sans MS ';
     popupCtx.fillStyle='#c34301';
@@ -35,6 +35,6 @@ var drawWinner=function drawWinner(player){
     popupCtx.strokeText('THE WINNER IS' ,(popup.width/5),60);
     popupCtx.fillText(player.name,(popup.width/3),110);
     popupCtx.strokeText(player.name,(popup.width/3),110);
-    pop.style.zIndex=1;
+    pop.style.display='inline-block';
 
 };
