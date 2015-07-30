@@ -8,7 +8,7 @@ canvas {
     box-sizing: border-box;
     border: 5px solid burlywood;
     border-radius: 10px;
-    background: url(backgroundSand.svg);
+    background: url(../svg/backgroundSand.svg);
     background-size: contain;
 }
 

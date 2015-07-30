@@ -31,7 +31,7 @@ Completed Tasks:
   - random colors for player paths
   - Worm-like paths
   - better-looking gamefield and background
-* Beach SVG - Luyba
+* Sand SVG - Luyba
 * Items (on the SVG with the background or new one) - Yane
 * Menu - Andrei
   - a way to decide how many players will take part
@@ -40,5 +40,5 @@ Completed Tasks:
 * Pausing (triggered by button or key) - Andrei
 * Event listener on player creation - Andrei
   - function that requires 2 arguments (buttons to move with)
-* Scoreboard – Nikola
+* Scoreboard (partially) – Nikola
 * PlayerArray (max 4) - Andrei
