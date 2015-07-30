@@ -4,14 +4,12 @@ var displayMenu = (function (canvas, cntx) {
         fontSelected = 'bold 28px verdana',
         startGameTextHeight = canvas.height / 4,
         optionsTextHeight = canvas.height / 2.5,
-        selectedOptions = false;
+        selectedOptions = false,
+        startGameText = 'Start Game',
+        optionsText = 'Options';
 
-    drawText(fontSelected, color, 'Start Game', startGameTextHeight);
-    drawText(normalFont, color, 'Options', optionsTextHeight);
-    cntx.beginPath();
-    cntx.lineTo(100, 100);
-    cntx.stroke();
-    cntx.closePath();
+    drawText(fontSelected, color, startGameText, startGameTextHeight);
+    drawText(normalFont, color, optionsText, optionsTextHeight);
 
     function drawText(font, fillstyle, optionName, height) {
         cntx.font = font;
@@ -29,13 +27,13 @@ var displayMenu = (function (canvas, cntx) {
         cntx.clearRect(0, 0, canvas.width, canvas.height);
 
         if (ev.keyCode === 38) { //switch menu items
-            drawText(fontSelected, color, 'Start Game', startGameTextHeight);
-            drawText(normalFont, color, 'Options', optionsTextHeight);
+            drawText(fontSelected, color, startGameText, startGameTextHeight);
+            drawText(normalFont, color, optionsText, optionsTextHeight);
             selectedOptions = false;
         }
         else if (ev.keyCode === 40) { //switch menu items
-            drawText(normalFont, color, 'Start Game', startGameTextHeight);
-            drawText(fontSelected, color, 'Options', optionsTextHeight);
+            drawText(normalFont, color, startGameText, startGameTextHeight);
+            drawText(fontSelected, color, optionsText, optionsTextHeight);
             selectedOptions = true;
         }
         else if (ev.keyCode === 13) { //Enter is pressed

@@ -1,34 +1,5 @@
 var numberOfPlayers = 0; //player0 and player1 - third and fourth player
 
-var playerControlsData = (function(){
-    var selectedPlayersControls = Object.create({});
-
-    Object.defineProperty(selectedPlayersControls, 'init', {
-        value: function(){
-            this.leftControls = [];
-            this.rightControls = [];
-
-            return this;
-        }
-    });
-
-    Object.defineProperty(selectedPlayersControls, 'addLeftControl', {
-        value: function(value){
-            this.leftControls.push(value);
-        }
-    });
-
-    Object.defineProperty(selectedPlayersControls, 'addRightControl', {
-        value: function(value){
-            this.rightControls.push(value);
-        }
-    });
-
-    return selectedPlayersControls;
-}());
-
-var controlsData = Object.create(playerControlsData).init();
-
 var displayOptionsMenu = (function(){
     var addPlayerButton = document.getElementById('addPlayer'),
         saveButton = document.getElementById('save'),
@@ -107,26 +78,6 @@ var displayOptionsMenu = (function(){
         setMovementElements(leftControlInput, leftControlInputSpan, 'left');
         setMovementElements(rightControlInput, rightControlInputSpan, 'right');
 
-        function setMovementElements(controlInput, controlInputSpan, direction){
-            controlInput.addEventListener('keydown', function(ev) {
-                controlInputSpan.innerHTML = String.fromCharCode(ev.keyCode);
-                controlInputSpan.style.display = 'inline-block';
-                controlInput.style.display = 'none';
-                if(direction === 'left'){
-                    controlsData.addLeftControl(ev.keyCode);
-                }
-                else if(direction === 'right'){
-                    controlsData.addRightControl(ev.keyCode);
-                }
-            }, false);
-
-            controlInputSpan.addEventListener('click', function(ev){
-                controlInputSpan.style.display = 'none';
-                controlInput.style.display = 'inline-block';
-                controlInput.setAttribute('autofocus', 'autofocus');
-            }, false);
-        }
-
         numberOfPlayers++;
     }
 
@@ -191,5 +142,25 @@ var displayOptionsMenu = (function(){
                 moveRight: controlsData.rightControls[id]
             });
         }
+    }
+
+    function setMovementElements(controlInput, controlInputSpan, direction){
+        controlInput.addEventListener('keydown', function(ev) {
+            controlInputSpan.innerHTML = String.fromCharCode(ev.keyCode);
+            controlInputSpan.style.display = 'inline-block';
+            controlInput.style.display = 'none';
+            if(direction === 'left'){
+                controlsData.addLeftControl(ev.keyCode);
+            }
+            else if(direction === 'right'){
+                controlsData.addRightControl(ev.keyCode);
+            }
+        }, false);
+
+        controlInputSpan.addEventListener('click', function(ev){
+            controlInputSpan.style.display = 'none';
+            controlInput.style.display = 'inline-block';
+            controlInput.setAttribute('autofocus', 'autofocus');
+        }, false);
     }
 });
