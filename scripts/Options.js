@@ -18,7 +18,8 @@ var displayOptionsMenu = (function(){
             return;
         }
 
-        var nameInput = document.createElement('input'),
+        var formFieldsFragment = document.createDocumentFragment(),
+            nameInput = document.createElement('input'),
             nameInputSpan = document.createElement('span'),
             nameSpan = document.createElement('span'),
             leftControlInput = document.createElement('input'),
@@ -31,35 +32,40 @@ var displayOptionsMenu = (function(){
         nameInput.setAttribute('type', 'text');
         nameInput.style.display = 'none';
         nameInputSpan.setAttribute('id', 'player' + numberOfPlayers);
+        nameInputSpan.setAttribute('class', 'form-input-label');
         nameInputSpan.innerHTML = 'Dobby';
         nameSpan.innerHTML = "Please enter nickname.";
 
-        form.appendChild(nameSpan);
-        form.appendChild(nameInput);
-        form.appendChild(nameInputSpan);
-        form.appendChild(document.createElement('br'));
+        formFieldsFragment.appendChild(nameSpan);
+        formFieldsFragment.appendChild(nameInput);
+        formFieldsFragment.appendChild(nameInputSpan);
+        formFieldsFragment.appendChild(document.createElement('br'));
 
         leftControlInput.setAttribute('type', 'text');
         leftControlInput.style.display = 'none';
         leftControlInputSpan.setAttribute('id', 'leftControlPlayer' + numberOfPlayers);
+        leftControlInputSpan.setAttribute('class', 'form-input-label');
         leftControlInputSpan.innerHTML = 'Enter key';
         leftControlSpan.innerHTML = "Move Left!";
 
-        form.appendChild(leftControlSpan);
-        form.appendChild(leftControlInput);
-        form.appendChild(leftControlInputSpan);
-        form.appendChild(document.createElement('br'));
+        formFieldsFragment.appendChild(leftControlSpan);
+        formFieldsFragment.appendChild(leftControlInput);
+        formFieldsFragment.appendChild(leftControlInputSpan);
+        formFieldsFragment.appendChild(document.createElement('br'));
 
         rightControlInput.setAttribute('type', 'text');
         rightControlInput.style.display = 'none';
         rightControlInputSpan.setAttribute('id', 'rightControlPlayer' + numberOfPlayers);
+        rightControlInputSpan.setAttribute('class', 'form-input-label');
         rightControlInputSpan.innerHTML = 'Enter key';
         rightControlSpan.innerHTML = 'Move right!';
 
-        form.appendChild(rightControlSpan);
-        form.appendChild(rightControlInput);
-        form.appendChild(rightControlInputSpan);
-        form.appendChild(document.createElement('br'));
+        formFieldsFragment.appendChild(rightControlSpan);
+        formFieldsFragment.appendChild(rightControlInput);
+        formFieldsFragment.appendChild(rightControlInputSpan);
+        formFieldsFragment.appendChild(document.createElement('br'));
+
+        form.appendChild(formFieldsFragment);
 
         nameInputSpan.addEventListener('click', function(ev){
             this.style.display = 'none';

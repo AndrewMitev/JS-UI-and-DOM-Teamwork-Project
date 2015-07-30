@@ -42,9 +42,29 @@ h1 {
 
 form {
     position: absolute;
-    top: 90px;
-    left: 350px;
+    top: 50px;
+    left: 250px;
     display: none;
+    font-size: 30px;
+    color: rgb(195, 67, 0);
+    text-shadow: -1px -1px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
+}
+
+form span {
+    margin-right: 20px;
+    letter-spacing: 1px;
+}
+
+form input {
+    height: 20px;
+    margin-top: 5px;
+    float: right;
+}
+
+form .form-input-label {
+    float: right;
+    margin-left: 86px;
+    margin-right: 0;
 }
 
 button#addPlayer {
