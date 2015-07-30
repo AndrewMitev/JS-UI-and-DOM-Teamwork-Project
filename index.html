@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,10 +12,16 @@
     <br/><h1>Endless worms
         <br/>[Telerik Teamwork Project]</h1>
 
+    <script>
+    var sound = new Audio('../audio/switch.wav'),
+        soundUp = new Audio('../audio/switchUp.wav'),
+        whoosh = new Audio('../audio/switchUp.wav');
+    </script>
+
     <form action="#" id="form"></form>
-    <button id="addPlayer">Add Player</button>
-    <button id="save">Save</button>
-    <button id="back">Back</button>
+    <button id="addPlayer" onmousedown="sound.play()" onmouseup="soundUp.play()">Add Player</button>
+    <button id="save" onmousedown="sound.play()" onmouseup="soundUp.play()">Save</button>
+    <button id="back" onmousedown="sound.play()" onmouseup="soundUp.play()">Back</button>
 
     <script type="text/javascript" src="scripts/constants.js"></script>
     <script type="text/javascript" src="scripts/gameField.js"></script>
