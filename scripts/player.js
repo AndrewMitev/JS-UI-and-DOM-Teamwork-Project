@@ -26,30 +26,42 @@ var player = (function () {
     function changePosition(player) {
         player.x += 2 * player.xModifier;
         player.y += 2 * player.yModifier;
-		if(player.y < 0) player.y = fieldHeight;
-		if(player.y > fieldHeight) player.y = 0;
-		if(player.x < 0) player.x = fieldWidth;
-		if(player.x > fieldWidth) player.x = 0;
+        if (player.y < 0) {
+            player.y = fieldHeight;
+        }
+        if (player.y > fieldHeight) {
+            player.y = 0;
+        }
+        if (player.x < 0) {
+            player.x = fieldWidth;
+        }
+        if (player.x > fieldWidth) {
+            player.x = 0;
+        }
     }
 
-	function checkCollision(player) {
-		var modifierVectorLength = Math.sqrt(player.xModifier * player.xModifier + player.yModifier * player.yModifier);
-		var modifierNormalizer = 1 / modifierVectorLength;
+    function checkCollision(player) {
+        var modifierVectorLength = Math.sqrt(player.xModifier * player.xModifier + player.yModifier * player.yModifier);
+        var modifierNormalizer = 1 / modifierVectorLength;
 
-		var colors = gameFieldCtx.getImageData(
-			player.x + (CONSTANTS.PLAYER_RADIUS + 2) * (player.xModifier * modifierNormalizer),
-			player.y + (CONSTANTS.PLAYER_RADIUS + 2) * (player.yModifier * modifierNormalizer), 1, 1).data;
-		if (colors[0] !== 0 || colors[2] !== 0 || colors[1] !== 0) {
-			//console.log(player.name  + ' - R:' + colors[0] + ' G:' + colors[1] + ' B:' + colors[2] + ' A:' + colors[3] + ' mV:' + modifierNormalizer + ' Xm:' + player.xModifier + ' Ym:' + player.yModifier);
-			player.states.isAlive = false;
-		}
-	}
-		
+        var colors = gameFieldCtx.getImageData(
+            player.x + (CONSTANTS.PLAYER_RADIUS + 2) * (player.xModifier * modifierNormalizer),
+            player.y + (CONSTANTS.PLAYER_RADIUS + 2) * (player.yModifier * modifierNormalizer), 1, 1).data;
+        if (colors[0] !== 0 || colors[1] !== 0 || colors[2] !== 0) {
+            //console.log(player.name  + ' - R:' + colors[0] + ' G:' + colors[1] + ' B:' + colors[2] + ' A:' + colors[3] + ' mV:' + modifierNormalizer + ' Xm:' + player.xModifier + ' Ym:' + player.yModifier);
+            player.states.isAlive = false;
+        }
+    }
+
     function drawPath(player) {
         gameFieldCtx.fillStyle = player.fillStyle;
         gameFieldCtx.beginPath();
         gameFieldCtx.arc(player.x, player.y, CONSTANTS.PLAYER_RADIUS, 0, 2 * Math.PI);
         gameFieldCtx.fill();
+        gameFieldCtx.strokeStyle = "brown";
+        if (Math.random() < 0.05) {
+            gameFieldCtx.stroke();
+        }
         gameFieldCtx.closePath();
     }
 
@@ -66,12 +78,12 @@ var player = (function () {
             this.yModifier = 0;
             this.id = ++currentId;
             this.name = name;
-            this.fillStyle = '#'+Math.random().toString(16).substr(-6);
+            this.fillStyle = '#' + Math.random().toString(16).substr(-6);
             this.movementAngle = 0;
             this.isLeftPressed = false;
             this.isRightPressed = false;
-			this.states = { isAlive: true };
-            this.points=0;
+            this.states = {isAlive: true};
+            this.points = 0;
             return this;
         }
     });
@@ -93,16 +105,16 @@ var player = (function () {
 
     Object.defineProperty(player, 'move', {
         value: function () {
-			if(this.states.isAlive){
-				checkCollision(this);
-				changeMovementAngle(this);
-				changeModifiers(this);
-				changePosition(this);
-				drawPath(this);
-			}
+            if (this.states.isAlive) {
+                checkCollision(this);
+                changeMovementAngle(this);
+                changeModifiers(this);
+                changePosition(this);
+                drawPath(this);
+            }
         }
     });
-	
+
     return player;
 }());
 
@@ -117,15 +129,15 @@ var player1 = Object.create(player).init('PlayerOne'),
 players.push(player1);
 players.push(player2);
 
-function AddPlayers(){
-    if(playersToAdd[0]){
+function AddPlayers() {
+    if (playersToAdd[0]) {
         player3 = Object.create(player).init(playersToAdd[0].name);
         addEventListener(player3, 'keydown', playersToAdd[0].moveLeft, playersToAdd[0].moveRight);
         addEventListener(player3, 'keyup', playersToAdd[0].moveLeft, playersToAdd[0].moveRight);
         players.push(player3);
     }
 
-    if(playersToAdd[1]){
+    if (playersToAdd[1]) {
         player4 = Object.create(player).init(playersToAdd[1].name);
         addEventListener(player4, 'keydown', playersToAdd[1].moveLeft, playersToAdd[1].moveRight);
         addEventListener(player4, 'keyup', playersToAdd[1].moveLeft, playersToAdd[1].moveRight);

@@ -4,27 +4,15 @@ To-Do List
 Mandatory tasks:
 -----------------
 * Player state (dead/alive) - Yani
-* Event listener on player creation
-  - function that requires 2 arguments (buttons to move with)
 * Improve collision - Yani
-* Items (on the SVG with the background or new one) - Yane
-* Menu - Andrei
-  - a way to decide how many players will take part
-  - fields for player's name and buttons to use and color
-  - a button to start the game
-* Scores - Andrei
-* Scoreboard Ц Yane and Nikola ??? јко н€ма да го прави Andrei
   - containing player's name and score
-* PlayerArray (max 4) (What about key-controls? It supposed four people to play together at same keyboard?)
 
 Optional tasks:
 ----------------
 * Unit testing
 * Move player size (radius) to player initialization
   - if there will be items to increase size
-* Pausing (triggered by button or key)
 * Sounds
-* Items (appearing on the SVG)
 
 Completed Tasks:
 -----------------
@@ -34,11 +22,23 @@ Completed Tasks:
 * Event listeners logic - Vesko 
 * Collision detection logic - Vesko and Yani
 * Path drawing logic - Vesko
-* Code quality - Yane
+* Code quality (partially) - Yane
   - code separated to different files
   - repeated code extracted to functions
   - naming improved
   - render function cleaned up
 * Design stuff - Yane
   - random colors for player paths
+  - Worm-like paths
   - better-looking gamefield and background
+* Beach SVG - Luyba
+* Items (on the SVG with the background or new one) - Yane
+* Menu - Andrei
+  - a way to decide how many players will take part
+  - fields for player's name and buttons to use and color
+  - a button to start the game
+* Pausing (triggered by button or key) - Andrei
+* Event listener on player creation - Andrei
+  - function that requires 2 arguments (buttons to move with)
+* Scoreboard Ц Nikola
+* PlayerArray (max 4) - Andrei
