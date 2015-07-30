@@ -43,7 +43,8 @@ h1 {
 form {
     position: absolute;
     top: 50px;
-    left: 220px;
+    left: 200px;
+    width: 550px;
     display: none;
     font-size: 28px;
     color: rgb(195, 67, 0);
@@ -51,7 +52,6 @@ form {
 }
 
 form span {
-    margin-right: 20px;
     letter-spacing: 1px;
 }
 
@@ -63,7 +63,6 @@ form input {
 
 form .form-input-label {
     float: right;
-    margin-left: 86px;
     margin-right: 0;
 }
 
