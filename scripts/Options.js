@@ -12,6 +12,63 @@ var displayOptionsMenu = (function(){
     saveButton.style.display = 'block';
     backButton.style.display = 'block';
 
+    var initializeForm=function(defaultName,leftKey,rightKey){
+        var formFieldsFragment = document.createDocumentFragment();
+        var  nameInput = document.createElement('input'),
+            nameInputSpan = document.createElement('span'),
+            nameSpan = document.createElement('span'),
+            leftControlInputSpan = document.createElement('span'),
+            leftControlSpan = document.createElement('span'),
+            rightControlInputSpan = document.createElement('span'),
+            rightControlSpan = document.createElement('span');
+
+        nameInput.setAttribute('type', 'text');
+        nameInput.style.display = 'none';
+        nameInputSpan.setAttribute('id', defaultName) ;
+        nameInputSpan.setAttribute('class', 'form-input-label');
+        nameInputSpan.innerHTML = defaultName;
+        nameSpan.innerHTML = "Please enter nickname.";
+
+        formFieldsFragment.appendChild(nameSpan);
+        formFieldsFragment.appendChild(nameInput);
+        formFieldsFragment.appendChild(nameInputSpan);
+        formFieldsFragment.appendChild(document.createElement('br'));
+
+        leftControlInputSpan.setAttribute('class', 'form-input-label');
+        leftControlInputSpan.innerHTML = leftKey;
+        leftControlSpan.innerHTML = "Move Left!";
+
+        formFieldsFragment.appendChild(leftControlSpan);
+        formFieldsFragment.appendChild(leftControlInputSpan);
+        formFieldsFragment.appendChild(document.createElement('br'));
+
+        rightControlInputSpan.setAttribute('class', 'form-input-label');
+        rightControlInputSpan.innerHTML = rightKey;
+        rightControlSpan.innerHTML = 'Move Right!';
+
+        formFieldsFragment.appendChild(rightControlSpan);
+        formFieldsFragment.appendChild(rightControlInputSpan);
+        formFieldsFragment.appendChild(document.createElement('br'));
+        form.appendChild(formFieldsFragment);
+
+        nameInputSpan.addEventListener('click', function(ev){
+            this.style.display = 'none';
+            nameInput.style.display = 'inline-block';
+            nameInput.setAttribute('autofocus', 'autofocus');
+        }, false);
+
+        nameInput.addEventListener('keydown', function(ev) {
+            if(ev.keyCode === 13) { //enter is pressed!
+                nameInputSpan.innerHTML = this.value;
+                this.style.display = 'none';
+                nameInputSpan.style.display = 'inline-block';
+            }
+        }, false);
+
+    };
+    initializeForm("PlayerOne","A","D");
+    initializeForm("PlayerTwo","Left Arrow","Right Arrow");
+
     addPlayerButton.onclick = function(){
         if(numberOfPlayers === 2){
             alert('Maximum Four Players Allowed!');
@@ -33,7 +90,7 @@ var displayOptionsMenu = (function(){
         nameInput.style.display = 'none';
         nameInputSpan.setAttribute('id', 'player' + numberOfPlayers);
         nameInputSpan.setAttribute('class', 'form-input-label');
-        nameInputSpan.innerHTML = 'PlayerThree';
+        nameInputSpan.innerHTML = 'NewPlayer';
         nameSpan.innerHTML = "Please enter nickname";
 
         formFieldsFragment.appendChild(nameSpan);
@@ -102,6 +159,8 @@ var displayOptionsMenu = (function(){
         var isThirdPlayerExistent = Boolean(document.getElementById('player0')),
             isFourthPlayerExistent = Boolean(document.getElementById('player1'));
 
+        saveDefaultPlayers("PlayerOne","PlayerTwo");
+
         if(isThirdPlayerExistent){
             if(!AllFieldsAreFilled(0)){
                 alert('Must enter all fields!');
@@ -121,6 +180,13 @@ var displayOptionsMenu = (function(){
 
         alert('Done.');
     };
+
+    function saveDefaultPlayers(playerOneId,playerTwoId){
+        var playerOneName=document.getElementById(playerOneId);
+        var playerTwoName=document.getElementById(playerTwoId);
+        player1.name=playerOneName.innerHTML;
+        player2.name=playerTwoName.innerHTML;
+    }
 
     function AllFieldsAreFilled(playerId){
         var name = document.getElementById('player' + playerId),

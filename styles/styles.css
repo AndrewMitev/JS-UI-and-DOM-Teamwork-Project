@@ -45,7 +45,7 @@ form {
     top: 50px;
     left: 220px;
     display: none;
-    font-size: 30px;
+    font-size: 28px;
     color: rgb(195, 67, 0);
     text-shadow: -1px -1px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
 }
@@ -77,7 +77,7 @@ button#addPlayer {
     width: 158px;
     height: 66px;
     display: none;
-    top: 380px;
+    top: 450px;
     left: 258px;
 }
 #addPlayer:active {
@@ -94,7 +94,7 @@ button#save {
     width: 158px;
     height: 66px;
     display: none;
-    top: 380px;
+    top: 450px;
     left: 408px;
 }
 #save:active {
@@ -111,7 +111,7 @@ button#back {
     width: 158px;
     height: 66px;
     display: none;
-    top: 380px;
+    top: 450px;
     left: 558px;
 }
 
