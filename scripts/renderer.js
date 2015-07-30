@@ -1,8 +1,9 @@
-var endOfRound=false;
-var round=1;
-var pop=document.getElementById('pop-up');
-var started=false;
-var isPaused=false;
+var endOfRound = false,
+    round = 1,
+    pop = document.getElementById('pop-up'),
+    started = false,
+    isPaused = false;
+
 function checkPoints(players){
     for (var currentPlayer in players) {
         var maxPoints = (players.length - 1) * 3;
@@ -55,14 +56,14 @@ var render = (function animationFrame() {
 });
 //render is called in displayMenu()
 displayMenu(gameField, gameFieldCtx);
-//Pause game with button "P"
 
+//Pause game with button "P"
 function addInGameListeners(){
     document.addEventListener('keydown', function Pause(ev) {
 
-        if (ev.keyCode == 80) {
+        if (ev.keyCode === 80) {
             if (isPaused) {
-                pop.style.zIndex=-11;
+                pop.style.zIndex = -11;
                 requestAnimationFrame(render);
             }
             isPaused = !isPaused;
@@ -71,11 +72,9 @@ function addInGameListeners(){
 
     document.addEventListener('keydown', function Start(ev) {
 
-        if (ev.keyCode == 32) {
-
-            started=true;
+        if (ev.keyCode === 32) {
+            started = true;
             render();
-
         }
-    },false);
+    }, false);
 }

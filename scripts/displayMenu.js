@@ -1,7 +1,7 @@
 var displayMenu = (function (canvas, cntx) {
     var color = '#c34301',
-        normalFont = 'bold 28px verdana',
-        fontSelected = 'bold 36px verdana',
+        normalFont = 'bold 28px verdana, sans-serif',
+        fontSelected = 'bold 36px verdana, sans-serif',
         startGameTextHeight = canvas.height / 3,
         optionsTextHeight = canvas.height / 2.3,
         selectedOptions = false,
@@ -26,9 +26,8 @@ var displayMenu = (function (canvas, cntx) {
 
     document.addEventListener('keydown', function changeMenuOption(ev) {
         cntx.clearRect(0, 0, canvas.width, canvas.height);
-        var down = new Audio('../audio/down.wav')
-            up = new Audio('../audio/up.wav')
-
+        var down = new Audio('../audio/down.wav'),
+            up = new Audio('../audio/up.wav');
         
         if (ev.keyCode === 38) { //switch menu items
             drawText(fontSelected, color, startGameText, startGameTextHeight);

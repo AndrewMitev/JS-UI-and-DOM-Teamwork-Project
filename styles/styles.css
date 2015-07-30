@@ -67,9 +67,7 @@ form .form-input-label {
 }
 
 button#addPlayer {
-    background-image: url(../images/AddPlayer.png);
-    background-repeat: no-repeat;
-    background-color: transparent;
+    background: transparent url(../images/AddPlayer.png) no-repeat;
     border: none;
     position: absolute;
     color: transparent;
@@ -84,9 +82,7 @@ button#addPlayer {
 }
 
 button#save {
-    background-image: url(../images/Save.png);
-    background-repeat: no-repeat;
-    background-color: transparent;
+    background: transparent url(../images/Save.png) no-repeat;
     border: none;
     position: absolute;
     color: transparent;
@@ -101,9 +97,7 @@ button#save {
 }
 
 button#back {
-    background-image: url(../images/Back.png);
-    background-repeat: no-repeat;
-    background-color: transparent;
+    background: transparent url(../images/Back.png) no-repeat;
     border: none;
     position: absolute;
     color: transparent;
