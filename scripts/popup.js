@@ -1,14 +1,16 @@
 var popup = document.getElementById('pop-up'),
     popupCtx = popup.getContext('2d'),
 
-    drawRound = function drawRound(round, button) {
+    drawRound = function drawRound(round, button, pause) {
         popupCtx.clearRect(0, 0, popup.width, popup.height);
         popupCtx.font = '35px Comic Sans MS, sans-serif ';
         popupCtx.fillStyle = '#c34301';
-        popupCtx.fillText('ROUND ' + round, (popup.width / 3), 60);
-        popupCtx.strokeText('ROUND ' + round, (popup.width / 3), 60);
+        popupCtx.fillText('ROUND ' + round, (popup.width / 3), 50);
+        popupCtx.strokeText('ROUND ' + round, (popup.width / 3), 50);
         popupCtx.fillText('Press "' + button + '" to start!', (popup.width / 10), 110);
         popupCtx.strokeText('Press "' + button + '" to start!', (popup.width / 10), 110);
+        popupCtx.fillText('Press "' + pause + '" to pause!', (popup.width / 6), 170);
+        popupCtx.strokeText('Press "' + pause + '" to pause!', (popup.width / 6), 170);
         pop.style.display = 'inline-block';
     },
 

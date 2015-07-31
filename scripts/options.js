@@ -1,11 +1,10 @@
-var numberOfPlayers = 0; //player0 and player1 - third and fourth player
-
 var displayOptionsMenu = (function () {
-    var addPlayerButton = document.getElementById('addPlayer'),
+    var numberOfPlayers = 0, //player0 and player1 - third and fourth player
+        addPlayerButton = document.getElementById('addPlayer'),
         saveButton = document.getElementById('save'),
-        backButton = document.getElementById('back');
+        backButton = document.getElementById('back'),
 
-    var form = document.getElementById('form');
+        form = document.getElementById('form');
 
     form.style.display = 'block';
     addPlayerButton.style.display = 'block';
@@ -13,8 +12,8 @@ var displayOptionsMenu = (function () {
     backButton.style.display = 'block';
 
     var initializeForm = function (defaultName, leftKey, rightKey) {
-        var formFieldsFragment = document.createDocumentFragment();
-        var nameInput = document.createElement('input'),
+        var formFieldsFragment = document.createDocumentFragment(),
+            nameInput = document.createElement('input'),
             nameInputSpan = document.createElement('span'),
             nameSpan = document.createElement('span'),
             leftControlInputSpan = document.createElement('span'),
@@ -27,7 +26,7 @@ var displayOptionsMenu = (function () {
         nameInput.setAttribute('id', defaultName);
         nameInputSpan.setAttribute('class', 'form-input-label');
         nameInputSpan.innerHTML = defaultName;
-        nameSpan.innerHTML = "Please enter nickname.";
+        nameSpan.innerHTML = "Enter nickname:";
 
         formFieldsFragment.appendChild(nameSpan);
         formFieldsFragment.appendChild(nameInput);
@@ -36,7 +35,7 @@ var displayOptionsMenu = (function () {
 
         leftControlInputSpan.setAttribute('class', 'form-input-label');
         leftControlInputSpan.innerHTML = leftKey;
-        leftControlSpan.innerHTML = "Move Left!";
+        leftControlSpan.innerHTML = "Move left!";
 
         formFieldsFragment.appendChild(leftControlSpan);
         formFieldsFragment.appendChild(leftControlInputSpan);
@@ -44,7 +43,7 @@ var displayOptionsMenu = (function () {
 
         rightControlInputSpan.setAttribute('class', 'form-input-label');
         rightControlInputSpan.innerHTML = rightKey;
-        rightControlSpan.innerHTML = 'Move Right!';
+        rightControlSpan.innerHTML = 'Move right!';
 
         formFieldsFragment.appendChild(rightControlSpan);
         formFieldsFragment.appendChild(rightControlInputSpan);
@@ -71,7 +70,7 @@ var displayOptionsMenu = (function () {
 
     addPlayerButton.onclick = function () {
         if (numberOfPlayers === 2) {
-            alert('Maximum Four Players Allowed!');
+            alert('Maximum four players allowed!');
             return;
         }
 
@@ -91,7 +90,7 @@ var displayOptionsMenu = (function () {
         nameInput.setAttribute('id', 'player' + numberOfPlayers);
         nameInputSpan.setAttribute('class', 'form-input-label');
         nameInputSpan.innerHTML = 'NewPlayer';
-        nameSpan.innerHTML = "Please enter nickname";
+        nameSpan.innerHTML = "Enter nickname:";
 
         formFieldsFragment.appendChild(nameSpan);
         formFieldsFragment.appendChild(nameInput);
@@ -103,7 +102,7 @@ var displayOptionsMenu = (function () {
         leftControlInputSpan.setAttribute('id', 'leftControlPlayer' + numberOfPlayers);
         leftControlInputSpan.setAttribute('class', 'form-input-label');
         leftControlInputSpan.innerHTML = 'Enter key';
-        leftControlSpan.innerHTML = "Move Left!";
+        leftControlSpan.innerHTML = "Move left!";
 
         formFieldsFragment.appendChild(leftControlSpan);
         formFieldsFragment.appendChild(leftControlInput);
@@ -163,7 +162,7 @@ var displayOptionsMenu = (function () {
 
         if (isThirdPlayerExistent) {
             if (!AllFieldsAreFilled(0)) {
-                alert('Must enter all fields!');
+                alert('All fields must be filled!');
                 return;
             }
             InsertPlayer(0);
@@ -171,19 +170,19 @@ var displayOptionsMenu = (function () {
 
         if (isFourthPlayerExistent) {
             if (!AllFieldsAreFilled(1)) {
-                alert('Must enter all fields!');
+                alert('All fields must be filled!');
                 return;
             }
 
             InsertPlayer(1);
         }
 
-        alert('Done.');
+        alert('Done');
     };
 
     function saveDefaultPlayers(playerOneId, playerTwoId) {
-        var playerOneName = document.getElementById(playerOneId).value;
-        var playerTwoName = document.getElementById(playerTwoId).value;
+        var playerOneName = document.getElementById(playerOneId).parentNode[0].value || 'PlayerOne';
+        var playerTwoName = document.getElementById(playerTwoId).parentNode[1].value || 'PlayerTwo';
         player1.name = playerOneName;
         player2.name = playerTwoName;
     }
@@ -201,7 +200,8 @@ var displayOptionsMenu = (function () {
     }
 
     function InsertPlayer(id) {
-        var name = document.getElementById('player' + id).value,
+        var name = document.getElementById('player' + id).parentNode[id + 2].value ||
+                document.getElementById('player' + id).parentNode[id + 4].value || 'NewPlayer',
             playerExists = playersToAdd.some(function (element) {
                 return element.id === id;
             });

@@ -25,31 +25,30 @@ var displayMenu = (function (canvas, cntx) {
     }
 
     document.addEventListener('keydown', function changeMenuOption(ev) {
-        cntx.clearRect(0, 0, canvas.width, canvas.height);
-
-        if (ev.keyCode === KEY.UP) { //switch menu items
+        if (ev.keyCode === KEY.UP) {
+            cntx.clearRect(0, 0, canvas.width, canvas.height);
             drawText(fontSelected, color, startGameText, startGameTextHeight);
             drawText(normalFont, color, optionsText, optionsTextHeight);
             sound('menuDown').play();
             selectedOptions = false;
         }
-        else if (ev.keyCode === KEY.DOWN) { //switch menu items
+        else if (ev.keyCode === KEY.DOWN) {
+            cntx.clearRect(0, 0, canvas.width, canvas.height);
             drawText(normalFont, color, startGameText, startGameTextHeight);
             drawText(fontSelected, color, optionsText, optionsTextHeight);
             sound('menuUp').play();
             selectedOptions = true;
         }
-        else if (ev.keyCode === KEY.ENTER) { //Enter is pressed
+        else if (ev.keyCode === KEY.ENTER) {
+            cntx.clearRect(0, 0, canvas.width, canvas.height);
             document.removeEventListener('keydown', changeMenuOption);
 
             if (selectedOptions) {
                 displayOptionsMenu();
-            }
-            else {
+            } else {
                 document.removeEventListener('keydown', changeMenuOption);
                 AddPlayers();
                 drawScoreBoard(players);
-                // drawRound(round,'Space');
                 addInGameListeners();
                 render();
             }

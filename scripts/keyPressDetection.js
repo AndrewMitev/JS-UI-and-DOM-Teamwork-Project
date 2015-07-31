@@ -34,7 +34,7 @@ function addInGameListeners() {
 
         if (ev.keyCode === KEY.P) {
             if (isPaused) {
-                pop.style.zIndex = -11;
+                pop.style.display = 'none';
                 requestAnimationFrame(render);
             }
             isPaused = !isPaused;
@@ -44,7 +44,7 @@ function addInGameListeners() {
     document.addEventListener('keydown', function Start(ev) {
 
         if (ev.keyCode === KEY.SPACE) {
-            started = true;
+            isStarted = true;
             render();
         }
     }, false);

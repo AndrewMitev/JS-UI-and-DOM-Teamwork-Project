@@ -3,7 +3,7 @@ var gameField = document.getElementById('game-field'),
     endOfRound = false,
     round = 1,
     pop = document.getElementById('pop-up'),
-    started = false,
+    isStarted = false,
     isPaused = false;
 
 function checkPoints(players) {
@@ -17,6 +17,7 @@ function checkPoints(players) {
         }
     }
 }
+
 function checkForRoundEnd(players) {
     var alivePlayers = aliveCount(players);
     if (alivePlayers === 1) {
@@ -24,10 +25,11 @@ function checkForRoundEnd(players) {
         return true;
     }
 }
+
 var render = (function animationFrame() {
     if (!isPaused) {
-        drawRound(round, 'Space');
-        if (started) {
+        drawRound(round, 'Space', 'P');
+        if (isStarted) {
             pop.style.display = 'none';
 
             for (var currentPlayer in players) {
@@ -46,13 +48,11 @@ var render = (function animationFrame() {
                     reinitPlayer(player);
                 });
                 round += 1;
-                started = false;
-
+                isStarted = false;
             }
             requestAnimationFrame(animationFrame);
         }
-    }
-    else {
-        drawPause('p');
+    } else {
+        drawPause('P');
     }
 });
