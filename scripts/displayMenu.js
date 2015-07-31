@@ -49,7 +49,7 @@ var displayMenu = (function (canvas, cntx) {
                 document.removeEventListener('keydown', changeMenuOption);
                 AddPlayers();
                 drawScoreboard(players);
-               // drawRound(round,'Space');
+                // drawRound(round,'Space');
                 addInGameListeners();
                 render();
             }

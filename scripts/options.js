@@ -1,6 +1,6 @@
 var numberOfPlayers = 0; //player0 and player1 - third and fourth player
 
-var displayOptionsMenu = (function(){
+var displayOptionsMenu = (function () {
     var addPlayerButton = document.getElementById('addPlayer'),
         saveButton = document.getElementById('save'),
         backButton = document.getElementById('back');
@@ -12,9 +12,9 @@ var displayOptionsMenu = (function(){
     saveButton.style.display = 'block';
     backButton.style.display = 'block';
 
-    var initializeForm=function(defaultName,leftKey,rightKey){
+    var initializeForm = function (defaultName, leftKey, rightKey) {
         var formFieldsFragment = document.createDocumentFragment();
-        var  nameInput = document.createElement('input'),
+        var nameInput = document.createElement('input'),
             nameInputSpan = document.createElement('span'),
             nameSpan = document.createElement('span'),
             leftControlInputSpan = document.createElement('span'),
@@ -24,7 +24,7 @@ var displayOptionsMenu = (function(){
 
         nameInput.setAttribute('type', 'text');
         nameInput.style.display = 'none';
-        nameInputSpan.setAttribute('id', defaultName) ;
+        nameInputSpan.setAttribute('id', defaultName);
         nameInputSpan.setAttribute('class', 'form-input-label');
         nameInputSpan.innerHTML = defaultName;
         nameSpan.innerHTML = "Please enter nickname.";
@@ -51,14 +51,14 @@ var displayOptionsMenu = (function(){
         formFieldsFragment.appendChild(document.createElement('br'));
         form.appendChild(formFieldsFragment);
 
-        nameInputSpan.addEventListener('click', function(ev){
+        nameInputSpan.addEventListener('click', function (ev) {
             this.style.display = 'none';
             nameInput.style.display = 'inline-block';
             nameInput.setAttribute('autofocus', 'autofocus');
         }, false);
 
-        nameInput.addEventListener('keydown', function(ev) {
-            if(ev.keyCode === KEY.ENTER) { //enter is pressed!
+        nameInput.addEventListener('keydown', function (ev) {
+            if (ev.keyCode === KEY.ENTER) { //enter is pressed!
                 nameInputSpan.innerHTML = this.value;
                 this.style.display = 'none';
                 nameInputSpan.style.display = 'inline-block';
@@ -66,11 +66,11 @@ var displayOptionsMenu = (function(){
         }, false);
 
     };
-    initializeForm("PlayerOne","A","D");
-    initializeForm("PlayerTwo","Left Arrow","Right Arrow");
+    initializeForm("PlayerOne", "A", "D");
+    initializeForm("PlayerTwo", "Left Arrow", "Right Arrow");
 
-    addPlayerButton.onclick = function(){
-        if(numberOfPlayers === 2){
+    addPlayerButton.onclick = function () {
+        if (numberOfPlayers === 2) {
             alert('Maximum Four Players Allowed!');
             return;
         }
@@ -124,14 +124,14 @@ var displayOptionsMenu = (function(){
 
         form.appendChild(formFieldsFragment);
 
-        nameInputSpan.addEventListener('click', function(ev){
+        nameInputSpan.addEventListener('click', function (ev) {
             this.style.display = 'none';
             nameInput.style.display = 'inline-block';
             nameInput.setAttribute('autofocus', 'autofocus');
         }, false);
 
-        nameInput.addEventListener('keydown', function(ev) {
-            if(ev.keyCode === KEY.ENTER) { //enter is pressed!
+        nameInput.addEventListener('keydown', function (ev) {
+            if (ev.keyCode === KEY.ENTER) { //enter is pressed!
                 nameInputSpan.innerHTML = this.value;
                 this.style.display = 'none';
                 nameInputSpan.style.display = 'inline-block';
@@ -144,7 +144,7 @@ var displayOptionsMenu = (function(){
         numberOfPlayers++;
     };
 
-    backButton.onclick = function(ev){
+    backButton.onclick = function (ev) {
         form.style.display = 'none';
         addPlayerButton.style.display = 'none';
         saveButton.style.display = 'none';
@@ -155,22 +155,22 @@ var displayOptionsMenu = (function(){
         displayMenu(gameField, gameFieldCtx);
     };
 
-    saveButton.onclick = function(){
+    saveButton.onclick = function () {
         var isThirdPlayerExistent = Boolean(document.getElementById('player0')),
             isFourthPlayerExistent = Boolean(document.getElementById('player1'));
 
-        saveDefaultPlayers("PlayerOne","PlayerTwo");
+        saveDefaultPlayers("PlayerOne", "PlayerTwo");
 
-        if(isThirdPlayerExistent){
-            if(!AllFieldsAreFilled(0)){
+        if (isThirdPlayerExistent) {
+            if (!AllFieldsAreFilled(0)) {
                 alert('Must enter all fields!');
                 return;
             }
             InsertPlayer(0);
         }
 
-        if(isFourthPlayerExistent){
-            if(!AllFieldsAreFilled(1)){
+        if (isFourthPlayerExistent) {
+            if (!AllFieldsAreFilled(1)) {
                 alert('Must enter all fields!');
                 return;
             }
@@ -181,32 +181,32 @@ var displayOptionsMenu = (function(){
         alert('Done.');
     };
 
-    function saveDefaultPlayers(playerOneId,playerTwoId){
-        var playerOneName=document.getElementById(playerOneId);
-        var playerTwoName=document.getElementById(playerTwoId);
-        player1.name=playerOneName.innerHTML;
-        player2.name=playerTwoName.innerHTML;
+    function saveDefaultPlayers(playerOneId, playerTwoId) {
+        var playerOneName = document.getElementById(playerOneId);
+        var playerTwoName = document.getElementById(playerTwoId);
+        player1.name = playerOneName.innerHTML;
+        player2.name = playerTwoName.innerHTML;
     }
 
-    function AllFieldsAreFilled(playerId){
+    function AllFieldsAreFilled(playerId) {
         var name = document.getElementById('player' + playerId),
             leftControl = document.getElementById('leftControlPlayer' + playerId),
             rightControl = document.getElementById('rightControlPlayer' + playerId);
 
-        if(leftControl.innerHTML === 'Enter key' || rightControl.innerHTML === 'Enter key'){
+        if (leftControl.innerHTML === 'Enter key' || rightControl.innerHTML === 'Enter key') {
             return false;
         }
 
         return true;
     }
 
-    function InsertPlayer(id){
+    function InsertPlayer(id) {
         var name = document.getElementById('player' + id),
-            playerExists = playersToAdd.some(function(element){
+            playerExists = playersToAdd.some(function (element) {
                 return element.id === id;
             });
 
-        if(!playerExists) {
+        if (!playerExists) {
             playersToAdd.push({
                 id: id,
                 name: name.innerHTML,
@@ -216,20 +216,20 @@ var displayOptionsMenu = (function(){
         }
     }
 
-    function setMovementElements(controlInput, controlInputSpan, direction){
-        controlInput.addEventListener('keydown', function(ev) {
+    function setMovementElements(controlInput, controlInputSpan, direction) {
+        controlInput.addEventListener('keydown', function (ev) {
             controlInputSpan.innerHTML = String.fromCharCode(ev.keyCode);
             controlInputSpan.style.display = 'inline-block';
             controlInput.style.display = 'none';
-            if(direction === 'left'){
+            if (direction === 'left') {
                 controlsData.addLeftControl(ev.keyCode);
             }
-            else if(direction === 'right'){
+            else if (direction === 'right') {
                 controlsData.addRightControl(ev.keyCode);
             }
         }, false);
 
-        controlInputSpan.addEventListener('click', function(ev){
+        controlInputSpan.addEventListener('click', function (ev) {
             controlInputSpan.style.display = 'none';
             controlInput.style.display = 'inline-block';
             controlInput.setAttribute('autofocus', 'autofocus');

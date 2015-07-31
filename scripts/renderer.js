@@ -4,7 +4,7 @@ var endOfRound = false,
     started = false,
     isPaused = false;
 
-function checkPoints(players){
+function checkPoints(players) {
     for (var currentPlayer in players) {
         var maxPoints = (players.length - 1) * 3;
         if (players[currentPlayer].points === maxPoints) {
@@ -15,7 +15,7 @@ function checkPoints(players){
         }
     }
 }
-function checkForRoundEnd(players){
+function checkForRoundEnd(players) {
     var alivePlayers = aliveCount(players);
     if (alivePlayers === 1) {
         drawScoreboard(players);
@@ -23,15 +23,15 @@ function checkForRoundEnd(players){
     }
 }
 var render = (function animationFrame() {
-    if(!isPaused){
-        drawRound(round,'Space');
-        if(started) {
+    if (!isPaused) {
+        drawRound(round, 'Space');
+        if (started) {
             pop.style.display = 'none';
 
             for (var currentPlayer in players) {
                 players[currentPlayer].move();
             }
-            if(checkPoints(players)){
+            if (checkPoints(players)) {
                 cancelAnimationFrame(animationFrame);
                 return;
             }
@@ -44,7 +44,7 @@ var render = (function animationFrame() {
                     reinitPlayer(player);
                 });
                 round += 1;
-                started=false;
+                started = false;
 
             }
             requestAnimationFrame(animationFrame);
@@ -58,7 +58,7 @@ var render = (function animationFrame() {
 displayMenu(gameField, gameFieldCtx);
 
 //Pause game with button "P"
-function addInGameListeners(){
+function addInGameListeners() {
     document.addEventListener('keydown', function Pause(ev) {
 
         if (ev.keyCode === KEY.P) {

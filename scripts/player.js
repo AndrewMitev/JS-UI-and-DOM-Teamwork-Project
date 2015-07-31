@@ -1,9 +1,9 @@
 var player = (function () {
     function changeMovementAngle(player) {
         if (player.isRightPressed) {
-            player.movementAngle += CONSTANTS.MOVEMENT_ANGLE_CHANGE;
+            player.movementAngle += PLAYER.MOVEMENT_ANGLE_CHANGE;
         } else if (player.isLeftPressed) {
-            player.movementAngle -= CONSTANTS.MOVEMENT_ANGLE_CHANGE;
+            player.movementAngle -= PLAYER.MOVEMENT_ANGLE_CHANGE;
         }
     }
 
@@ -27,32 +27,34 @@ var player = (function () {
         player.x += 2 * player.xModifier;
         player.y += 2 * player.yModifier;
         if (player.y < 0) {
-            player.y = fieldHeight;
+            player.y = GAMEFIELD.HEIGHT;
         }
-        if (player.y > fieldHeight) {
+        if (player.y > GAMEFIELD.HEIGHT) {
             player.y = 0;
         }
         if (player.x < 0) {
-            player.x = fieldWidth;
+            player.x = GAMEFIELD.WIDTH;
         }
-        if (player.x > fieldWidth) {
+        if (player.x > GAMEFIELD.WIDTH) {
             player.x = 0;
         }
     }
-    function givePointsToAlivePlayers(){
-        players.forEach(function updatePlayerScore(player){
-            if(player.states.isAlive){
-                player.points+=1;
+
+    function givePointsToAlivePlayers() {
+        players.forEach(function updatePlayerScore(player) {
+            if (player.states.isAlive) {
+                player.points += 1;
             }
         })
     }
+
     function checkCollision(player) {
         var modifierVectorLength = Math.sqrt(player.xModifier * player.xModifier + player.yModifier * player.yModifier);
         var modifierNormalizer = 1 / modifierVectorLength;
 
         var colors = gameFieldCtx.getImageData(
-            player.x + (CONSTANTS.PLAYER_RADIUS + 2) * (player.xModifier * modifierNormalizer),
-            player.y + (CONSTANTS.PLAYER_RADIUS + 2) * (player.yModifier * modifierNormalizer), 1, 1).data;
+            player.x + (PLAYER.RADIUS + 2) * (player.xModifier * modifierNormalizer),
+            player.y + (PLAYER.RADIUS + 2) * (player.yModifier * modifierNormalizer), 1, 1).data;
         if (colors[0] !== 0 || colors[1] !== 0 || colors[2] !== 0) {
             //console.log(player.name  + ' - R:' + colors[0] + ' G:' + colors[1] + ' B:' + colors[2] + ' A:' + colors[3] + ' mV:' + modifierNormalizer + ' Xm:' + player.xModifier + ' Ym:' + player.yModifier);
             player.states.isAlive = false;
@@ -63,7 +65,7 @@ var player = (function () {
     function drawPath(player) {
         gameFieldCtx.fillStyle = player.fillStyle;
         gameFieldCtx.beginPath();
-        gameFieldCtx.arc(player.x, player.y, CONSTANTS.PLAYER_RADIUS, 0, 2 * Math.PI);
+        gameFieldCtx.arc(player.x, player.y, PLAYER.RADIUS, 0, 2 * Math.PI);
         gameFieldCtx.fill();
         gameFieldCtx.strokeStyle = "brown";
         if (Math.random() < 0.05) {
@@ -73,14 +75,12 @@ var player = (function () {
     }
 
     var currentId = 0,
-        fieldWidth = parseInt(gameField.getAttribute('width')),
-        fieldHeight = parseInt(gameField.getAttribute('height')),
         player = Object.create({});
 
     Object.defineProperty(player, 'init', {
         value: function (name) {
-            this.x = parseInt(Math.random() * fieldWidth);
-            this.y = parseInt(Math.random() * fieldHeight);
+            this.x = parseInt(Math.random() * GAMEFIELD.WIDTH);
+            this.y = parseInt(Math.random() * GAMEFIELD.HEIGHT);
             this.xModifier = 1;
             this.yModifier = 0;
             this.id = ++currentId;
@@ -101,9 +101,9 @@ var player = (function () {
         },
         set: function (value) {
             if (value < 0) {
-                this._movementAngle = 360 - CONSTANTS.MOVEMENT_ANGLE_CHANGE;
+                this._movementAngle = 360 - PLAYER.MOVEMENT_ANGLE_CHANGE;
             } else if (value > 360) {
-                this._movementAngle = CONSTANTS.MOVEMENT_ANGLE_CHANGE;
+                this._movementAngle = PLAYER.MOVEMENT_ANGLE_CHANGE;
             } else {
                 this._movementAngle = value;
             }
@@ -152,20 +152,16 @@ function AddPlayers() {
     }
 }
 
-function reinitPlayer(player){
-    var width = parseInt(gameField.getAttribute('width')),
-        height = parseInt(gameField.getAttribute('height'));
-    player.x=parseInt(Math.random() * width);
-    player.y=parseInt(Math.random() * height);
-    player.states.isAlive=true;
-
-
+function reinitPlayer(player) {
+    player.x = parseInt(Math.random() * GAMEFIELD.WIDTH);
+    player.y = parseInt(Math.random() * GAMEFIELD.HEIGHT);
+    player.states.isAlive = true;
 }
-function aliveCount(players){
-    var counter=0;
-    for(var i=0;i<players.length;i+=1){
-        if(players[i].states.isAlive){
-            counter+=1;
+function aliveCount(players) {
+    var counter = 0;
+    for (var i = 0; i < players.length; i += 1) {
+        if (players[i].states.isAlive) {
+            counter += 1;
         }
     }
     return counter;

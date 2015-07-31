@@ -14,15 +14,13 @@ var fire = (function () {
         return self;
     }
 
-    var fieldWidth = parseInt(gameField.getAttribute('width')),
-        fieldHeight = parseInt(gameField.getAttribute('height')),
-        burn = new Image();
+    var burn = new Image();
 
     Object.defineProperty(burn, 'init', {
         value: function () {
             var self = burn;
-            self._x = parseInt(Math.random() * fieldWidth);
-            self._y = parseInt(Math.random() * fieldHeight);
+            self._x = parseInt(Math.random() * GAMEFIELD.WIDTH);
+            self._y = parseInt(Math.random() * GAMEFIELD.HEIGHT);
             return self;
         }
     });
