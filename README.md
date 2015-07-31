@@ -1,4 +1,4 @@
-# JS-UI-and-DOM-Teamwork-Project
+# Endless Worms (JavaScript Game)
 Team "Horse's Neck" teamwork project for the Telerik Academy's JavaScript UI and DOM course
 
 <hr>
