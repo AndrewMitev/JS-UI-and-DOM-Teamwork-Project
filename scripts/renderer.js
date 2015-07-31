@@ -61,7 +61,7 @@ displayMenu(gameField, gameFieldCtx);
 function addInGameListeners(){
     document.addEventListener('keydown', function Pause(ev) {
 
-        if (ev.keyCode === 80) {
+        if (ev.keyCode === KEY.P) {
             if (isPaused) {
                 pop.style.zIndex = -11;
                 requestAnimationFrame(render);
@@ -72,7 +72,7 @@ function addInGameListeners(){
 
     document.addEventListener('keydown', function Start(ev) {
 
-        if (ev.keyCode === 32) {
+        if (ev.keyCode === KEY.SPACE) {
             started = true;
             render();
         }

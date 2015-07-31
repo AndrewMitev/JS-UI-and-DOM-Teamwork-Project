@@ -17,13 +17,13 @@ var addEventListener = (function (playerNumber, keyState, keyCodeLeft, keyCodeRi
             playerNumber.isRightPressed = isKeyPressed;
         }
         // Prevent space and arrow keys from scrolling the page
-        if (isHandled) {
+        if (isHandled && (ev.keyCode === KEY.SPACE || ev.keyCode === KEY.UP || ev.keyCode === KEY.DOWN)) {
             ev.preventDefault();
         }
     }, false);
 });
 
-addEventListener(player1, 'keydown', 65, 68);
-addEventListener(player1, 'keyup', 65, 68);
-addEventListener(player2, 'keydown', 37, 39);
-addEventListener(player2, 'keyup', 37, 39);
+addEventListener(player1, 'keydown', KEY.A, KEY.D);
+addEventListener(player1, 'keyup', KEY.A, KEY.D);
+addEventListener(player2, 'keydown', KEY.LEFT, KEY.RIGHT);
+addEventListener(player2, 'keyup', KEY.LEFT, KEY.RIGHT);

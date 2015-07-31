@@ -1,13 +1,10 @@
-/**
- * Created by Niki on 30.7.2015 ã..
- */
 var popup = document.getElementById('pop-up'),
     popupCtx = popup.getContext('2d');
 
 var drawRound=function drawRound(round,button){
 
     popupCtx.clearRect(0,0,popup.width,popup.height);
-    popupCtx.font='35px Comic Sans MS ';
+    popupCtx.font='35px Comic Sans MS, sans-serif ';
     popupCtx.fillStyle='#c34301';
     popupCtx.fillText('ROUND '+round,(popup.width/3),60);
     popupCtx.strokeText('ROUND '+round,(popup.width/3),60);
@@ -19,7 +16,7 @@ var drawRound=function drawRound(round,button){
 var drawPause=function drawPause(button){
     pop.style.display='inline-block';
     popupCtx.clearRect(0,0,popup.width,popup.height);
-    popupCtx.font='35px Comic Sans MS ';
+    popupCtx.font='35px Comic Sans MS, sans-serif';
     popupCtx.fillStyle='#c34301';
     popupCtx.fillText('The game is now paused!',(popup.width/10),60);
     popupCtx.strokeText('The game is now paused!',(popup.width/10),60);
@@ -29,7 +26,7 @@ var drawPause=function drawPause(button){
 };
 var drawWinner=function drawWinner(player){
     popupCtx.clearRect(0,0,popup.width,popup.height);
-    popupCtx.font='36px Comic Sans MS ';
+    popupCtx.font='36px Comic Sans MS, sans-serif';
     popupCtx.fillStyle='#c34301';
     popupCtx.fillText('THE WINNER IS ',(popup.width/5),60);
     popupCtx.strokeText('THE WINNER IS' ,(popup.width/5),60);

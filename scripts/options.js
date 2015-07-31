@@ -58,7 +58,7 @@ var displayOptionsMenu = (function(){
         }, false);
 
         nameInput.addEventListener('keydown', function(ev) {
-            if(ev.keyCode === 13) { //enter is pressed!
+            if(ev.keyCode === KEY.ENTER) { //enter is pressed!
                 nameInputSpan.innerHTML = this.value;
                 this.style.display = 'none';
                 nameInputSpan.style.display = 'inline-block';
@@ -131,7 +131,7 @@ var displayOptionsMenu = (function(){
         }, false);
 
         nameInput.addEventListener('keydown', function(ev) {
-            if(ev.keyCode === 13) { //enter is pressed!
+            if(ev.keyCode === KEY.ENTER) { //enter is pressed!
                 nameInputSpan.innerHTML = this.value;
                 this.style.display = 'none';
                 nameInputSpan.style.display = 'inline-block';
