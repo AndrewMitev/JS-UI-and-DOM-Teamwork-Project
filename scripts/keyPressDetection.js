@@ -27,3 +27,25 @@ addEventListener(player1, 'keydown', KEY.A, KEY.D);
 addEventListener(player1, 'keyup', KEY.A, KEY.D);
 addEventListener(player2, 'keydown', KEY.LEFT, KEY.RIGHT);
 addEventListener(player2, 'keyup', KEY.LEFT, KEY.RIGHT);
+
+//Pause game with button "P"
+function addInGameListeners() {
+    document.addEventListener('keydown', function Pause(ev) {
+
+        if (ev.keyCode === KEY.P) {
+            if (isPaused) {
+                pop.style.zIndex = -11;
+                requestAnimationFrame(render);
+            }
+            isPaused = !isPaused;
+        }
+    }, false);
+
+    document.addEventListener('keydown', function Start(ev) {
+
+        if (ev.keyCode === KEY.SPACE) {
+            started = true;
+            render();
+        }
+    }, false);
+}

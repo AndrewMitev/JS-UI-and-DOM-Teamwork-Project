@@ -56,25 +56,3 @@ var render = (function animationFrame() {
         drawPause('p');
     }
 });
-
-//Pause game with button "P"
-function addInGameListeners() {
-    document.addEventListener('keydown', function Pause(ev) {
-
-        if (ev.keyCode === KEY.P) {
-            if (isPaused) {
-                pop.style.zIndex = -11;
-                requestAnimationFrame(render);
-            }
-            isPaused = !isPaused;
-        }
-    }, false);
-
-    document.addEventListener('keydown', function Start(ev) {
-
-        if (ev.keyCode === KEY.SPACE) {
-            started = true;
-            render();
-        }
-    }, false);
-}

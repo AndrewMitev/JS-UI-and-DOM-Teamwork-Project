@@ -55,4 +55,6 @@ var displayMenu = (function (canvas, cntx) {
             }
         }
     });
-}(gameField, gameFieldCtx));
+});
+
+displayMenu(gameField, gameFieldCtx);
