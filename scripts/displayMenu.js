@@ -26,15 +26,20 @@ var displayMenu = (function (canvas, cntx) {
 
     document.addEventListener('keydown', function changeMenuOption(ev) {
         cntx.clearRect(0, 0, canvas.width, canvas.height);
+        var down = new Audio('../audio/down.wav')
+            up = new Audio('../audio/up.wav')
 
+        
         if (ev.keyCode === 38) { //switch menu items
             drawText(fontSelected, color, startGameText, startGameTextHeight);
             drawText(normalFont, color, optionsText, optionsTextHeight);
+            down.play();
             selectedOptions = false;
         }
         else if (ev.keyCode === 40) { //switch menu items
             drawText(normalFont, color, startGameText, startGameTextHeight);
             drawText(fontSelected, color, optionsText, optionsTextHeight);
+            up.play();
             selectedOptions = true;
         }
         else if (ev.keyCode === 13) { //Enter is pressed
