@@ -24,7 +24,7 @@ var displayOptionsMenu = (function () {
 
         nameInput.setAttribute('type', 'text');
         nameInput.style.display = 'none';
-        nameInputSpan.setAttribute('id', defaultName);
+        nameInput.setAttribute('id', defaultName);
         nameInputSpan.setAttribute('class', 'form-input-label');
         nameInputSpan.innerHTML = defaultName;
         nameSpan.innerHTML = "Please enter nickname.";
@@ -88,7 +88,7 @@ var displayOptionsMenu = (function () {
 
         nameInput.setAttribute('type', 'text');
         nameInput.style.display = 'none';
-        nameInputSpan.setAttribute('id', 'player' + numberOfPlayers);
+        nameInput.setAttribute('id', 'player' + numberOfPlayers);
         nameInputSpan.setAttribute('class', 'form-input-label');
         nameInputSpan.innerHTML = 'NewPlayer';
         nameSpan.innerHTML = "Please enter nickname";
@@ -182,14 +182,14 @@ var displayOptionsMenu = (function () {
     };
 
     function saveDefaultPlayers(playerOneId, playerTwoId) {
-        var playerOneName = document.getElementById(playerOneId);
-        var playerTwoName = document.getElementById(playerTwoId);
-        player1.name = playerOneName.innerHTML;
-        player2.name = playerTwoName.innerHTML;
+        var playerOneName = document.getElementById(playerOneId).value;
+        var playerTwoName = document.getElementById(playerTwoId).value;
+        player1.name = playerOneName;
+        player2.name = playerTwoName;
     }
 
     function AllFieldsAreFilled(playerId) {
-        var name = document.getElementById('player' + playerId),
+        var name = document.getElementById('player' + playerId).value,
             leftControl = document.getElementById('leftControlPlayer' + playerId),
             rightControl = document.getElementById('rightControlPlayer' + playerId);
 
@@ -201,7 +201,7 @@ var displayOptionsMenu = (function () {
     }
 
     function InsertPlayer(id) {
-        var name = document.getElementById('player' + id),
+        var name = document.getElementById('player' + id).value,
             playerExists = playersToAdd.some(function (element) {
                 return element.id === id;
             });
@@ -209,7 +209,7 @@ var displayOptionsMenu = (function () {
         if (!playerExists) {
             playersToAdd.push({
                 id: id,
-                name: name.innerHTML,
+                name: name,
                 moveLeft: controlsData.leftControls[id],
                 moveRight: controlsData.rightControls[id]
             });
