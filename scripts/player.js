@@ -27,15 +27,15 @@ var player = (function () {
         player.x += 2 * player.xModifier;
         player.y += 2 * player.yModifier;
         if (player.y < 0) {
-            player.y = GAMEFIELD.HEIGHT;
+            player.y = gameField.height;
         }
-        if (player.y > GAMEFIELD.HEIGHT) {
+        if (player.y > gameField.height) {
             player.y = 0;
         }
         if (player.x < 0) {
-            player.x = GAMEFIELD.WIDTH;
+            player.x = gameField.width;
         }
-        if (player.x > GAMEFIELD.WIDTH) {
+        if (player.x > gameField.width) {
             player.x = 0;
         }
     }
@@ -75,12 +75,16 @@ var player = (function () {
     }
 
     var currentId = 0,
-        player = Object.create({});
+        player = Object.create({}),
+        PLAYER = {
+            RADIUS: 12,
+            MOVEMENT_ANGLE_CHANGE: 4
+        };
 
     Object.defineProperty(player, 'init', {
         value: function (name) {
-            this.x = parseInt(Math.random() * GAMEFIELD.WIDTH);
-            this.y = parseInt(Math.random() * GAMEFIELD.HEIGHT);
+            this.x = parseInt(Math.random() * gameField.width);
+            this.y = parseInt(Math.random() * gameField.height);
             this.xModifier = 1;
             this.yModifier = 0;
             this.id = ++currentId;
@@ -153,8 +157,8 @@ function AddPlayers() {
 }
 
 function reinitPlayer(player) {
-    player.x = parseInt(Math.random() * GAMEFIELD.WIDTH);
-    player.y = parseInt(Math.random() * GAMEFIELD.HEIGHT);
+    player.x = parseInt(Math.random() * gameField.width);
+    player.y = parseInt(Math.random() * gameField.height);
     player.states.isAlive = true;
 }
 function aliveCount(players) {

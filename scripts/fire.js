@@ -19,8 +19,8 @@ var fire = (function () {
     Object.defineProperty(burn, 'init', {
         value: function () {
             var self = burn;
-            self._x = parseInt(Math.random() * GAMEFIELD.WIDTH);
-            self._y = parseInt(Math.random() * GAMEFIELD.HEIGHT);
+            self._x = parseInt(Math.random() * gameField.width);
+            self._y = parseInt(Math.random() * gameField.height);
             return self;
         }
     });

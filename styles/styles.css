@@ -57,7 +57,7 @@ form .form-input-label {
 }
 
 button#addPlayer {
-    background: transparent url(../images/AddPlayer.png) no-repeat;
+    background: transparent url('../images/AddPlayer.png') no-repeat;
     border: none;
     position: absolute;
     color: transparent;
@@ -69,11 +69,11 @@ button#addPlayer {
 }
 
 button#addPlayer:active {
-    background-image: url(../images/AddPlayerPushed.png);
+    background-image: url('../images/AddPlayerPushed.png');
 }
 
 button#save {
-    background: transparent url(../images/Save.png) no-repeat;
+    background: transparent url('../images/Save.png') no-repeat;
     border: none;
     position: absolute;
     color: transparent;
@@ -85,11 +85,11 @@ button#save {
 }
 
 button#save:active {
-    background-image: url(../images/SavePushed.png);
+    background-image: url('../images/SavePushed.png');
 }
 
 button#back {
-    background: transparent url(../images/Back.png) no-repeat;
+    background: transparent url('../images/Back.png') no-repeat;
     border: none;
     position: absolute;
     color: transparent;
@@ -101,5 +101,5 @@ button#back {
 }
 
 button#back:active {
-    background-image: url(../images/BackPushed.png);
+    background-image: url('../images/BackPushed.png');
 }

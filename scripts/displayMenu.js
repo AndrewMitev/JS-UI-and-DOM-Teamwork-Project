@@ -55,4 +55,4 @@ var displayMenu = (function (canvas, cntx) {
             }
         }
     });
-});
+}(gameField, gameFieldCtx));

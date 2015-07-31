@@ -1,4 +1,7 @@
-var drawRound = function drawRound(round, button) {
+var popup = document.getElementById('pop-up'),
+    popupCtx = popup.getContext('2d'),
+
+    drawRound = function drawRound(round, button) {
         popupCtx.clearRect(0, 0, popup.width, popup.height);
         popupCtx.font = '35px Comic Sans MS, sans-serif ';
         popupCtx.fillStyle = '#c34301';

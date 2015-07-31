@@ -1,4 +1,6 @@
-var endOfRound = false,
+var gameField = document.getElementById('game-field'),
+    gameFieldCtx = gameField.getContext('2d'),
+    endOfRound = false,
     round = 1,
     pop = document.getElementById('pop-up'),
     started = false,
@@ -54,8 +56,6 @@ var render = (function animationFrame() {
         drawPause('p');
     }
 });
-//render is called in displayMenu()
-displayMenu(gameField, gameFieldCtx);
 
 //Pause game with button "P"
 function addInGameListeners() {
