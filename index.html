@@ -10,16 +10,12 @@
     <canvas id="scoreboard" width="350" height="495"></canvas>
     <canvas id="pop-up" width="500" height="200"></canvas>
 
-    <script>
-    var sound = new Audio('audio/switch.ogg'),
-        soundUp = new Audio('audio/switchUp.ogg'),
-        whoosh = new Audio('audio/switchUp.ogg');
-    </script>
+    <script type="text/javascript" src="scripts/sound.js"></script>
 
     <form action="#" id="form"></form>
-    <button id="addPlayer" onmousedown="sound.play()" onmouseup="soundUp.play()">Add Player</button>
-    <button id="save" onmousedown="sound.play()" onmouseup="soundUp.play()">Save</button>
-    <button id="back" onmousedown="sound.play()" onmouseup="soundUp.play()">Back</button>
+    <button id="addPlayer" onmousedown="sound('btnPressed').play()" onmouseup="sound('btnReleased').play()">Add Player</button>
+    <button id="save" onmousedown="sound('btnPressed').play()" onmouseup="sound('btnReleased').play()">Save</button>
+    <button id="back" onmousedown="sound('btnPressed').play()" onmouseup="sound('btnReleased').play()">Back</button>
 
     <script type="text/javascript" src="scripts/constants.js"></script>
     <script type="text/javascript" src="scripts/gameField.js"></script>
