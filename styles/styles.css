@@ -1,43 +1,33 @@
 canvas {
-    border: 2px solid burlywood;
+    border: 5px solid saddlebrown;
+    border-radius: 10px;
+    background: url('../svg/backgroundSand.svg');
+}
+
+canvas#game-field {
     background: url('../images/tree.jpg');
     background-size: 100% auto;
 }
 
-#scoreboard {
+canvas#score-board {
     box-sizing: border-box;
-    border: 5px solid saddlebrown;
-    border-radius: 10px;
-    background: url(../svg/backgroundSand.svg);
     background-size: contain;
     margin-top: 5px;
 }
 
-#pop-up{
+canvas#pop-up {
     position: absolute;
     left: 250px;
-    top:100px;
+    top: 100px;
     display: none;
-    border: 7px solid saddlebrown;
     border-radius: 20px;
+    background-size: contain;
 }
 
 body {
     background-image: url('../images/forest.jpg');
     background-size: 100% auto;
     opacity: 1;
-}
-
-h1 {
-    font: bold 20px Arial, sans-serif;
-    -webkit-text-stroke: 1px black;
-    color: white;
-    text-shadow:
-    3px 3px 0 #000,
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
 }
 
 form {
@@ -77,7 +67,8 @@ button#addPlayer {
     top: 450px;
     left: 258px;
 }
-#addPlayer:active {
+
+button#addPlayer:active {
     background-image: url(../images/AddPlayerPushed.png);
 }
 
@@ -92,7 +83,8 @@ button#save {
     top: 450px;
     left: 408px;
 }
-#save:active {
+
+button#save:active {
     background-image: url(../images/SavePushed.png);
 }
 
@@ -108,6 +100,6 @@ button#back {
     left: 558px;
 }
 
-#back:active {
+button#back:active {
     background-image: url(../images/BackPushed.png);
 }

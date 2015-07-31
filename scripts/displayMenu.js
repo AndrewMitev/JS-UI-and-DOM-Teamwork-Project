@@ -48,7 +48,7 @@ var displayMenu = (function (canvas, cntx) {
             else {
                 document.removeEventListener('keydown', changeMenuOption);
                 AddPlayers();
-                drawScoreboard(players);
+                drawScoreBoard(players);
                 // drawRound(round,'Space');
                 addInGameListeners();
                 render();

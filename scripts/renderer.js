@@ -9,7 +9,7 @@ function checkPoints(players) {
         var maxPoints = (players.length - 1) * 3;
         if (players[currentPlayer].points === maxPoints) {
             gameFieldCtx.clearRect(0, 0, gameField.width, gameField.height);
-            drawScoreboard(players);
+            drawScoreBoard(players);
             drawWinner(players[currentPlayer]);
             return true;
         }
@@ -18,7 +18,7 @@ function checkPoints(players) {
 function checkForRoundEnd(players) {
     var alivePlayers = aliveCount(players);
     if (alivePlayers === 1) {
-        drawScoreboard(players);
+        drawScoreBoard(players);
         return true;
     }
 }
