@@ -27,19 +27,19 @@ var displayMenu = (function (canvas, cntx) {
     document.addEventListener('keydown', function changeMenuOption(ev) {
         cntx.clearRect(0, 0, canvas.width, canvas.height);
 
-        if (ev.keyCode === 38) { //switch menu items
+        if (ev.keyCode === KEY.UP) { //switch menu items
             drawText(fontSelected, color, startGameText, startGameTextHeight);
             drawText(normalFont, color, optionsText, optionsTextHeight);
             sound('menuDown').play();
             selectedOptions = false;
         }
-        else if (ev.keyCode === 40) { //switch menu items
+        else if (ev.keyCode === KEY.DOWN) { //switch menu items
             drawText(normalFont, color, startGameText, startGameTextHeight);
             drawText(fontSelected, color, optionsText, optionsTextHeight);
             sound('menuUp').play();
             selectedOptions = true;
         }
-        else if (ev.keyCode === 13) { //Enter is pressed
+        else if (ev.keyCode === KEY.ENTER) { //Enter is pressed
             document.removeEventListener('keydown', changeMenuOption);
 
             if (selectedOptions) {
