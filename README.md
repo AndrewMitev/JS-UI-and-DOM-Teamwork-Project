@@ -12,3 +12,5 @@ Team "Horse's Neck" teamwork project for the Telerik Academy's JavaScript UI and
 <li>Lyuba Gerassimova</li>
 <li>Krasimir Totev</li>
 </ul>
+
+Online demo: https://rawgit.com/shunobaka/JS-UI-and-DOM-Teamwork-Project/master/index.html
